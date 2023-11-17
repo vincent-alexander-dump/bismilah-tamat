@@ -1,0 +1,42 @@
+name: vincent_s_application6
+description: A new Flutter project.
+version: 1.0.0+1
+environment: 
+  sdk: '>=2.12.0 <3.0.0'
+dependencies: 
+  flutter: 
+    sdk: flutter
+  cached_network_image: ^3.2.1
+  flutter_svg: ^1.1.6
+  country_pickers: ^2.0.0
+  grouped_list: ^5.1.2
+  intl: ^0.18.0
+dev_dependencies: 
+  flutter_test: 
+    sdk: flutter
+flutter: 
+  uses-material-design: true
+  assets: 
+    - assets/
+    - assets/images/
+  fonts: 
+    - family: Roboto
+      fonts: 
+        - asset: assets/fonts/RobotoRomanBold.ttf
+          weight: 700
+        - asset: assets/fonts/RobotoRomanRegular.ttf
+          weight: 400
+        - asset: assets/fonts/RobotoRomanMedium.ttf
+          weight: 500
+        - asset: assets/fonts/RobotoRomanLight.ttf
+          weight: 300
+        - asset: assets/fonts/RobotoItalicLight.ttf
+          weight: 300
+        - asset: assets/fonts/RobotoItalicBold.ttf
+          weight: 700
+        - asset: assets/fonts/RobotoRomanThin.ttf
+          weight: 100
+    - family: Inter
+      fonts: 
+        - asset: assets/fonts/InterSemiBold.ttf
+          weight: 600
