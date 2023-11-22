@@ -1,6 +1,5 @@
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';
-import 'package:country_pickers/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 import 'package:vincent_s_application6/widgets/custom_text_form_field.dart';
@@ -71,7 +70,6 @@ class CustomPhoneNumber extends StatelessWidget {
               width: 111.h,
               controller: controller,
               hintText: "+6287878101920",
-              hintStyle: CustomTextStyles.bodyMedium14,
             ),
           ),
         ),

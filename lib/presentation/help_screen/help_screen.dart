@@ -2,16 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_leading_image.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_subtitle_one.dart';
-import 'package:vincent_s_application6/widgets/app_bar/appbar_subtitle_three.dart';
-import 'package:vincent_s_application6/widgets/app_bar/appbar_trailing_image.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
-import 'package:vincent_s_application6/widgets/custom_search_view.dart';
 
 // ignore_for_file: must_be_immutable
 class HelpScreen extends StatelessWidget {
   HelpScreen({Key? key}) : super(key: key);
-
-  TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +16,29 @@ class HelpScreen extends StatelessWidget {
             resizeToAvoidBottomInset: false,
             appBar: _buildAppBar(context),
             body: Container(
-                width: double.maxFinite,
-                padding: EdgeInsets.symmetric(vertical: 32.v),
                 child: Column(children: [
-                  Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 11.h),
-                      child: CustomSearchView(
-                          controller: searchController,
-                          hintText: "Look for problems you are having")),
-                  SizedBox(height: 35.v),
+                  SizedBox(height: 20.v),
+                   Container(
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: 16.0), // Add margin for the gap
+              padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30.0),
+                border: Border.all(
+                  color: Colors.black, // Set the outline color
+                  width: 2.0, // Set the outline width
+                ),
+              ),
+              child: Text(
+                'Search your problem here...',
+                style: TextStyle(
+                  color: const Color.fromARGB(255, 60, 59, 59),
+                  fontSize: 18.0,
+                ),
+              ),
+            ),
+            SizedBox(height: 20.0),
                   _buildThirtyTwo(context),
                   Divider(indent: 19.h, endIndent: 14.h),
                   _buildThirtyThree(context,
@@ -64,14 +73,6 @@ class HelpScreen extends StatelessWidget {
             }),
         title:
             AppbarSubtitleOne(text: "Help", margin: EdgeInsets.only(left: 8.h)),
-        actions: [
-          AppbarTrailingImage(
-              imagePath: ImageConstant.imgMdiCommentQuestion,
-              margin: EdgeInsets.only(left: 15.h, top: 28.v, right: 25.h)),
-          AppbarSubtitleThree(
-              text: "My Report",
-              margin: EdgeInsets.fromLTRB(5.h, 33.v, 40.h, 1.v))
-        ],
         styleType: Style.bgFill);
   }
 
@@ -138,6 +139,6 @@ class HelpScreen extends StatelessWidget {
 
   /// Navigates back to the previous screen.
   onTapArrowLeft(BuildContext context) {
-    Navigator.pop(context);
+    Navigator.pushNamed(context, AppRoutes.settingScreen);
   }
 }

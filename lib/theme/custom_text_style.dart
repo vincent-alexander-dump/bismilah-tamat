@@ -23,7 +23,7 @@ class CustomTextStyles {
         fontWeight: FontWeight.w400,
       );
   static get bodyLargeOnPrimaryContainer => theme.textTheme.bodyLarge!.copyWith(
-        color: theme.colorScheme.onPrimaryContainer,
+        color: Colors.black,
         fontWeight: FontWeight.w400,
       );
   static get bodyLargeOnPrimaryLight => theme.textTheme.bodyLarge!.copyWith(
@@ -253,11 +253,6 @@ class CustomTextStyles {
 }
 
 extension on TextStyle {
-  TextStyle get roboto {
-    return copyWith(
-      fontFamily: 'Roboto',
-    );
-  }
 
   TextStyle get inter {
     return copyWith(

@@ -20,6 +20,7 @@ class PromosPageState extends State<PromosPage>
   bool get wantKeepAlive => true;
   @override
   Widget build(BuildContext context) {
+    super.build(context); //
     mediaQueryData = MediaQuery.of(context);
 
     return SafeArea(

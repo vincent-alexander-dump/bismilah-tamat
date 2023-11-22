@@ -25,15 +25,15 @@ class AppbarTitleButton extends StatelessWidget {
       child: Padding(
         padding: margin ?? EdgeInsets.zero,
         child: CustomElevatedButton(
-          height: 27.v,
-          width: 133.h,
-          text: "My Profile",
+          height: 50,
+          width: 150,
+          text: "Change Profile",
           leftIcon: Container(
             margin: EdgeInsets.only(right: 8.h),
             child: CustomImageView(
               imagePath: ImageConstant.imgArrowLeft,
-              height: 27.v,
-              width: 32.h,
+              height: 27,
+              width: 32,
             ),
           ),
           buttonStyle: CustomButtonStyles.none,

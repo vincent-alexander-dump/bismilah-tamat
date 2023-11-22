@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
+import 'package:vincent_s_application6/presentation/inbox_screen/inbox_screen.dart';
+import 'package:vincent_s_application6/presentation/subscribe_page/subscribe_page.dart';
+import 'package:vincent_s_application6/widgets/app_bar/appbar_leading_image.dart';
+import 'package:vincent_s_application6/widgets/app_bar/appbar_title.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_title_button.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
 
@@ -11,7 +15,7 @@ class SettingScreen extends StatelessWidget {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-            appBar: _buildAppBar(context),
+            appBar: appBar(context),
             body: Container(
                 width: double.maxFinite,
                 padding: EdgeInsets.symmetric(vertical: 8.v),
@@ -50,7 +54,7 @@ class SettingScreen extends StatelessWidget {
                       child: _buildTwentySix(context,
                           heroiconsQuest: ImageConstant.imgStreamlineInte,
                           helpReport: "Rating")),
-                  Divider(indent: 18.h, endIndent: 16.h),
+                  Divider(indent: 18.h, endIndent: 13.h),
                   Padding(
                       padding: EdgeInsets.only(left: 1.h),
                       child: _buildTwentySix(context,
@@ -58,19 +62,8 @@ class SettingScreen extends StatelessWidget {
                               ImageConstant.imgMaterialSymbolsLogout,
                           helpReport: "Logout Account")),
                   SizedBox(height: 5.v),
-                  Divider(indent: 18.h, endIndent: 16.h)
+                  Divider(indent: 18.h, endIndent: 13.h)
                 ]))));
-  }
-
-  /// Section Widget
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-        title: AppbarTitleButton(
-            margin: EdgeInsets.only(left: 13.h),
-            onTap: () {
-              onTapMyProfile(context);
-            }),
-        styleType: Style.bgFill);
   }
 
   /// Section Widget
@@ -86,6 +79,14 @@ class SettingScreen extends StatelessWidget {
                   width: 51.h,
                   margin: EdgeInsets.only(bottom: 11.v)),
               Expanded(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, AppRoutes.profileScreen);
+                  }, 
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.white),
+                    elevation: MaterialStateProperty.all(0),
+                  ),
                   child: Padding(
                       padding: EdgeInsets.only(left: 7.h, top: 9.v),
                       child: Column(
@@ -107,26 +108,43 @@ class SettingScreen extends StatelessWidget {
                                 style: CustomTextStyles.bodyMediumLight),
                             SizedBox(height: 2.v),
                             Text("087878101920",
-                                style: CustomTextStyles.bodyMediumLight)
+                                style: CustomTextStyles.bodyMediumLight) 
                           ])))
+                )
             ])));
   }
 
   /// Section Widget
-  Widget _buildMySpace(BuildContext context) {
-    return SizedBox(
-        height: 39.v,
-        width: 359.h,
-        child: Stack(alignment: Alignment.center, children: [
+Widget _buildMySpace(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      // Navigate to another screen when the SizedBox is clicked
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SubscribePage()), // Replace AnotherScreen() with the screen you want to navigate to
+      );
+    },
+    child: SizedBox(
+      height: 39.v,
+      width: 359.h,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
           CustomImageView(
-              imagePath: ImageConstant.imgRectangle47,
-              height: 38.v,
-              width: 359.h,
-              alignment: Alignment.center),
+            imagePath: ImageConstant.imgRectangle47,
+            height: 38.v,
+            width: 359.h,
+            alignment: Alignment.center,
+          ),
           _buildTwentySix(context,
-              heroiconsQuest: ImageConstant.imgMyspace, helpReport: "Subscribe")
-        ]));
-  }
+            heroiconsQuest: ImageConstant.imgMyspace,
+            helpReport: "Subscribe"
+          ),
+        ],
+      ),
+    ),
+  );
+}
 
   /// Section Widget
   Widget _buildTwentyFive(BuildContext context) {
@@ -157,30 +175,43 @@ class SettingScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildTwentyNine(BuildContext context) {
-    return Container(
-        width: double.maxFinite,
-        padding: EdgeInsets.symmetric(horizontal: 19.h, vertical: 10.v),
-        decoration: AppDecoration.fillOnPrimaryContainer,
-        child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              CustomImageView(
-                  imagePath: ImageConstant.imgIconParkOutlineInboxIn,
-                  height: 19.v,
-                  width: 24.h),
-              Padding(
-                  padding: EdgeInsets.only(left: 8.h, top: 2.v),
-                  child: Text("Inbox", style: theme.textTheme.titleMedium)),
-              Spacer(),
-              CustomImageView(
-                  imagePath: ImageConstant.imgArrowRight,
-                  height: 13.v,
-                  width: 21.h,
-                  margin: EdgeInsets.only(top: 8.v))
-            ]));
-  }
+Widget _buildTwentyNine(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => InboxScreen()), // Replace AnotherScreen() with the screen you want to navigate to
+      );
+    },
+    child: Container(
+      width: double.maxFinite,
+      padding: EdgeInsets.symmetric(horizontal: 19.h, vertical: 10.v),
+      decoration: AppDecoration.fillOnPrimaryContainer,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          CustomImageView(
+            imagePath: ImageConstant.imgIconParkOutlineInboxIn,
+            height: 19.v,
+            width: 24.h,
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 8.h, top: 2.v),
+            child: Text("Inbox", style: theme.textTheme.titleMedium),
+          ),
+          Spacer(),
+          CustomImageView(
+            imagePath: ImageConstant.imgArrowRight,
+            height: 13.v,
+            width: 21.h,
+            margin: EdgeInsets.only(top: 8.v),
+          ),
+        ],
+      ),
+    ),
+  );
+}
 
   /// Common widget
   Widget _buildTwentySix(
@@ -212,7 +243,21 @@ class SettingScreen extends StatelessWidget {
   }
 
   /// Navigates to the mainScreenContainerScreen when the action is triggered.
-  onTapMyProfile(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.mainScreenContainerScreen);
+  PreferredSizeWidget appBar(BuildContext context) {
+    return CustomAppBar(
+        leadingWidth: 48.h,
+        leading: AppbarLeadingImage(
+            imagePath: ImageConstant.imgArrowLeftBlue600,
+            margin: EdgeInsets.only(left: 16.h, top: 26.v, bottom: 24.v),
+            onTap: () {
+              arrowBack(context);
+            }),
+        title: AppbarTitle(text: "My Profile", margin: EdgeInsets.only(left: 13.h)),
+        styleType: Style.bgFill);
+  }
+
+  /// Navigates back to the previous screen.
+  arrowBack(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.mainScreenPage);
   }
 }
