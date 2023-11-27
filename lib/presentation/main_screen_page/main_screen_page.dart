@@ -1,8 +1,15 @@
+// ignore_for_file: unused_import
+
+import 'package:vincent_s_application6/widgets/app_bar/appbar_leading_image.dart';
+import 'package:vincent_s_application6/widgets/app_bar/appbar_subtitle_one.dart';
+
 import '../main_screen_page/widgets/flowride_item_widget.dart';
 import '../main_screen_page/widgets/subcribepjekplus_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
+import 'package:vincent_s_application6/widgets/app_bar/appbar_title_searchview.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
+import 'package:flutter/cupertino.dart';
 
 // ignore_for_file: must_be_immutable
 class MainScreenPage extends StatelessWidget {
@@ -22,7 +29,6 @@ class MainScreenPage extends StatelessWidget {
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      
                       _buildSaldo(context),
                       SizedBox(height: 21.v),
                       _buildFlowRide(context),
@@ -34,40 +40,31 @@ class MainScreenPage extends StatelessWidget {
                               child: Text("Recommended For You",
                                   style: CustomTextStyles.titleLargeLight))),
                       SizedBox(height: 15.v),
-                      _buildSubcribePJekPlus(context)
+                      _buildSubcribePJekPlus(context),
+                      SizedBox(height: 20.v),
+                      _buildBottomButtons(context), 
                     ]))));
   }
-
+  
   /// Section Widget
+   onTapArrowLeft(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.settingScreen);
+  }
+
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return CustomAppBar(
-        height: 80.v,
-        // title: AppbarTitleSearchview(
-          
-        //     margin: EdgeInsets.only(left: 13.h),
-        //     hintText: "Find anything here"),
-        //     // controller: searchController),
-        actions: [
-          Container(
-              height: 65.v,
-              width: 49.h,
-              margin: EdgeInsets.fromLTRB(10.h, 7.v, 10.h, 8.v),
-              child: Stack(alignment: Alignment.center, children: [
-                Align(
-                    alignment: Alignment.center,
-                    child: Container(
-                        height: 47.v,
-                        width: 46.h,
-                        margin: EdgeInsets.symmetric(
-                            horizontal: 1.h, vertical: 9.v),
-                        decoration: BoxDecoration(color: appTheme.blue600))),
-                CustomImageView(
-                    imagePath: ImageConstant.imgTestAccount,
-                    height: 65.v,
-                    width: 49.h,
-                    alignment: Alignment.center)
-              ]))
-        ],
+        leadingWidth: 47.h,
+        leading: CustomImageView(
+              imagePath: ImageConstant.imgTestAccount,
+              // height: 30.v,
+              // width: 3.h,
+              margin: EdgeInsets.only(left: 5.h),
+              onTap: () {
+              onTapArrowLeft(context);
+            }
+            ),
+        title:
+            AppbarSubtitleOne(text: "Your Account", margin: EdgeInsets.only(left: 8.h)),
         styleType: Style.bgFill);
   }
 
@@ -210,9 +207,117 @@ class MainScreenPage extends StatelessWidget {
   onTapPJek(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.orderScreen);
   }
-
   /// Navigates to the eWalletMainScreen when the action is triggered.
   onTapSaldo(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletMainScreen);
   }
+  Widget _buildBottomButtons(BuildContext context) {
+  return  Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.mainScreenPage);
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Color(0xFF00A86B)),
+                      side: MaterialStateProperty.all(
+                        BorderSide(width: 0.0, color: Colors.black),
+                      ),
+                      foregroundColor: MaterialStateProperty.all(Colors.black),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(10.0)),
+                      textStyle: MaterialStateProperty.all(TextStyle(fontSize: 22)),
+                      shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0.0),
+                      ),
+                      ),
+                      minimumSize: MaterialStateProperty.all(
+                      Size(double.infinity, 70.0),
+                    ),
+                    ),
+                    child: Text("Home"),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.promosTabContainerScreen);
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Color(0xFFCD5C5C)),
+                      side: MaterialStateProperty.all(
+                        BorderSide(width: 0.0, color: Colors.black),
+                      ),
+                      foregroundColor: MaterialStateProperty.all(Colors.black),
+                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 10.0)),
+                      textStyle: MaterialStateProperty.all(TextStyle(fontSize: 22)),
+                      shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0.0),
+                      ),
+                      
+            ),
+            minimumSize: MaterialStateProperty.all(
+    Size(double.infinity, 70.0), // Adjust the height (50.0) as needed
+  ),
+                    ),
+                    child: Text("Promo"),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.inboxScreen);
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Color(0xFFFFD801)),
+                      side: MaterialStateProperty.all(
+                        BorderSide(width: 0.0, color: Colors.black),
+                      ),
+                      foregroundColor: MaterialStateProperty.all(Colors.black),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(19.0)),
+                      textStyle: MaterialStateProperty.all(TextStyle(fontSize: 22)),
+                      shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0.0),
+                      ),
+                      
+            ),
+                      minimumSize: MaterialStateProperty.all(
+                      Size(double.infinity, 70.0), 
+                      ),
+                    ),
+                    child: Text("Inbox"),
+                  ),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {
+                          Navigator.pushNamed(context, AppRoutes.chatScreen);
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Color(0xFF008ECC)),
+                      side: MaterialStateProperty.all(
+                        BorderSide(width: 0.0, color: Colors.black),
+                      ),
+                      foregroundColor: MaterialStateProperty.all(Colors.black),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(19.0)),
+                      textStyle: MaterialStateProperty.all(TextStyle(fontSize: 22)),
+                      shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(0.0),
+                        ),
+                      ),
+                      minimumSize: MaterialStateProperty.all(
+                      Size(double.infinity, 70.0), // Adjust the height (50.0) as needed
+                      ),
+                    ),
+                    child: Text("Chat"),
+                  ),
+                ),
+              ],
+            );
+}
 }

@@ -41,6 +41,6 @@ class InboxScreen extends StatelessWidget {
 
   /// Navigates back to the previous screen.
   arrowBack(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.mainScreenContainerScreen);
+    Navigator.pushNamed(context, AppRoutes.mainScreenPage);
   }
 }

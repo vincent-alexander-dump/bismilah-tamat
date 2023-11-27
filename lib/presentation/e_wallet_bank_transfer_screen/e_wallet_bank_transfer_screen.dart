@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
+import 'package:vincent_s_application6/widgets/app_bar/appbar_leading_image.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_subtitle_one.dart';
-import 'package:vincent_s_application6/widgets/app_bar/appbar_title_image.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
 import 'package:vincent_s_application6/widgets/custom_elevated_button.dart';
 
@@ -102,33 +102,7 @@ class EWalletBankTransferScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-        height: 68.v,
-        title: Container(
-            height: 34.510002.v,
-            width: 174.h,
-            margin: EdgeInsets.only(left: 13.h),
-            child: Stack(alignment: Alignment.center, children: [
-              Align(
-                  alignment: Alignment.center,
-                  child: Container(
-                      height: 34.v,
-                      width: 174.h,
-                      decoration: BoxDecoration(color: appTheme.blue600))),
-              AppbarTitleImage(
-                  imagePath: ImageConstant.imgArrowLeft,
-                  margin: EdgeInsets.only(left: 1.h, right: 141.h, bottom: 7.v),
-                  onTap: () {
-                    onTapArrowLeft(context);
-                  }),
-              AppbarSubtitleOne(
-                  text: "Bank Transfer",
-                  margin: EdgeInsets.only(left: 41.h, right: 7.h, bottom: 10.v))
-            ])),
-        styleType: Style.bgFill);
-  }
-
+  
   /// Section Widget
   Widget _buildAlarm(BuildContext context) {
     return Container(
@@ -162,25 +136,36 @@ class EWalletBankTransferScreen extends StatelessWidget {
 
   /// Section Widget
   Widget _buildCaraTopUpmenggunakanVirtualAcc(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.symmetric(horizontal: 18.h, vertical: 21.v),
-        decoration: AppDecoration.fillPink10001
-            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder43),
-        child: Column(mainAxisSize: MainAxisSize.min, children: [
+  return Container(
+    width: MediaQuery.of(context).size.width,
+    child: Container(
+      padding: EdgeInsets.symmetric(horizontal: 18.h, vertical: 21.v),
+      decoration: BoxDecoration(
+        color: Color(0xFFFFB6C1),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
           Text("Cara TopUp menggunakan Virtual Account :",
               style: theme.textTheme.titleMedium),
           SizedBox(height: 32.v),
           SizedBox(
-              width: 319.h,
-              child: Text(
-                  "Buka akun Bank anda.\nkemudian klik pada bagian Transfer.\nsetelah tombol transfer dipencet, akan muncul pilihan Virtual Account. Tekan tombol tersebut.\nMasukkan nomor Virtual account sesuai dengan yang diberikan.\nSetelah masukkan nomor Virtual Account, masukkan jumlah nominal yang diinginkan.\nSelesai.",
-                  maxLines: 10,
-                  overflow: TextOverflow.ellipsis,
-                  style: CustomTextStyles.bodyLargeLight_1)),
-          SizedBox(height: 25.v)
-        ]));
-  }
-
+            height: 240.v,
+            width: 319.h,
+            child: Text(
+              "1. Buka akun Bank anda.\n\n2. kemudian klik pada bagian Transfer.\n\n3. setelah tombol transfer dipencet, akan muncul pilihan Virtual Account. Tekan tombol tersebut.\n\n4. Masukkan nomor Virtual account sesuai dengan yang diberikan.\n\n5. Setelah masukkan nomor Virtual Account, masukkan jumlah nominal yang diinginkan.\n\n6. Selesai.",
+              maxLines: 20,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 14.0, // Set your desired font size
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
   /// Section Widget
   Widget _buildCONFIRM(BuildContext context) {
     return CustomElevatedButton(
@@ -193,7 +178,21 @@ class EWalletBankTransferScreen extends StatelessWidget {
 
   /// Navigates back to the previous screen.
   onTapArrowLeft(BuildContext context) {
-    Navigator.pop(context);
+    Navigator.pushNamed(context, AppRoutes.eWalletTopupScreen);
+  }
+
+  PreferredSizeWidget _buildAppBar(BuildContext context) {
+    return CustomAppBar(
+        leadingWidth: 47.h,
+        leading: AppbarLeadingImage(
+            imagePath: ImageConstant.imgArrowLeft,
+            margin: EdgeInsets.only(left: 15.h, top: 25.v, bottom: 25.v),
+            onTap: () {
+              onTapArrowLeft(context);
+            }),
+        title:
+            AppbarSubtitleOne(text: "Bank Transfer", margin: EdgeInsets.only(left: 8.h)),
+        styleType: Style.bgFill);
   }
 
   /// Navigates to the eWalletSuccessPaymentScreen when the action is triggered.

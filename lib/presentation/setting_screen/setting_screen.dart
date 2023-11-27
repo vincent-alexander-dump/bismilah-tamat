@@ -1,7 +1,10 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
+import 'package:vincent_s_application6/presentation/help_screen/help_screen.dart';
 import 'package:vincent_s_application6/presentation/inbox_screen/inbox_screen.dart';
-import 'package:vincent_s_application6/presentation/subscribe_page/subscribe_page.dart';
+import 'package:vincent_s_application6/presentation/subscribe_tab_container_screen/subscribe_tab_container_screen.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_leading_image.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_title.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_title_button.dart';
@@ -33,11 +36,7 @@ class SettingScreen extends StatelessWidget {
                   Divider(indent: 18.h, endIndent: 13.h),
                   _buildTwentyFive(context),
                   Divider(indent: 21.h, endIndent: 12.h),
-                  Padding(
-                      padding: EdgeInsets.only(left: 1.h),
-                      child: _buildTwentySix(context,
-                          heroiconsQuest: ImageConstant.imgHeroiconsQuest,
-                          helpReport: "Help & Report")),
+                  help(context),
                   Divider(indent: 18.h, endIndent: 13.h),
                   SizedBox(height: 45.v),
                   Align(
@@ -121,7 +120,7 @@ Widget _buildMySpace(BuildContext context) {
       // Navigate to another screen when the SizedBox is clicked
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => SubscribePage()), // Replace AnotherScreen() with the screen you want to navigate to
+        MaterialPageRoute(builder: (context) => SubscribeTabContainerScreen()), // Replace AnotherScreen() with the screen you want to navigate to
       );
     },
     child: SizedBox(
@@ -145,6 +144,38 @@ Widget _buildMySpace(BuildContext context) {
     ),
   );
 }
+
+Widget help(BuildContext context) {
+  return GestureDetector(
+    onTap: () {
+      // Navigate to another screen when the SizedBox is clicked
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HelpScreen()), // Replace AnotherScreen() with the screen you want to navigate to
+      );
+    },
+    child: SizedBox(
+      height: 39.v,
+      width: 359.h,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          CustomImageView(
+            imagePath: ImageConstant.imgRectangle47,
+            height: 38.v,
+            width: 359.h,
+            alignment: Alignment.center,
+          ),
+          _buildTwentySix(context,
+            heroiconsQuest: ImageConstant.imgMyspace,
+            helpReport: "Help & Report"
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 
   /// Section Widget
   Widget _buildTwentyFive(BuildContext context) {

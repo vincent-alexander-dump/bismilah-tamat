@@ -165,6 +165,6 @@ class LoginScreen extends StatelessWidget {
   }
 
   toMainScreen(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.mainScreenContainerScreen);
+    Navigator.pushNamed(context, AppRoutes.mainScreenPage);
   }
 }

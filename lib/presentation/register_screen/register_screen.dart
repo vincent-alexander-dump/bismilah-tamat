@@ -139,6 +139,6 @@ class RegisterScreen extends StatelessWidget {
 
   /// Navigates to the mainScreenContainerScreen when the action is triggered.
   toMainScreen(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.mainScreenContainerScreen);
+    Navigator.pushNamed(context, AppRoutes.mainScreenPage);
   }
 }

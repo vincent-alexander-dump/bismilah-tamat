@@ -5,7 +5,6 @@ import 'package:vincent_s_application6/widgets/app_bar/appbar_subtitle_one.dart'
 import 'package:vincent_s_application6/widgets/app_bar/appbar_subtitle_two.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_title_image.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
-import 'package:vincent_s_application6/widgets/custom_elevated_button.dart';
 import 'package:vincent_s_application6/widgets/custom_text_form_field.dart';
 
 // ignore_for_file: must_be_immutable
@@ -151,6 +150,6 @@ class ChatScreen extends StatelessWidget {
 
   /// Navigates back to the previous screen.
   onTapArrowLeft(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.orderScreen);
+    Navigator.pushNamed(context, AppRoutes.mainScreenPage);
   }
 }
