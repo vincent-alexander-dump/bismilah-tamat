@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
+import 'package:vincent_s_application6/widgets/app_bar/appbar_leading_image.dart';
+import 'package:vincent_s_application6/widgets/app_bar/appbar_title.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_title_button_five.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
 import 'package:vincent_s_application6/widgets/custom_elevated_button.dart';
@@ -29,7 +31,7 @@ class EWalletCreditCardScreen extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: false,
-            appBar: _buildAppBar(context),
+            appBar: appBar(context),
             body: SizedBox(
                 width: double.maxFinite,
                 child: Column(
@@ -86,18 +88,6 @@ class EWalletCreditCardScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
-    return CustomAppBar(
-        height: 66.v,
-        title: AppbarTitleButtonFive(
-            margin: EdgeInsets.only(left: 13.h),
-            onTap: () {
-              onTapCreditCard(context);
-            }),
-        styleType: Style.bgFill);
-  }
-
-  /// Section Widget
   Widget _buildInformasiKartu(BuildContext context) {
     return Container(
         width: double.maxFinite,
@@ -122,11 +112,10 @@ class EWalletCreditCardScreen extends StatelessWidget {
                             width: 239.h,
                             margin: EdgeInsets.only(right: 13.h),
                             child: Text(
-                                "Kami memastikan bahwa informasi dari kartu anda tidak akan dapat diakses siapapun termasuk pihak PJek.",
+                                "Kami memastikan bahwa informasi dari kartu anda tidak akan dapat diakses siapapun termasuk pihak Flow Ride.",
                                 maxLines: 3,
                                 overflow: TextOverflow.ellipsis,
-                                style:
-                                    CustomTextStyles.bodySmallBlack900Light12))
+                                style: CustomTextStyles.bodySmallBlack90011))
                       ])))
         ]));
   }
@@ -136,7 +125,10 @@ class EWalletCreditCardScreen extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.only(left: 23.h, right: 49.h),
         child: CustomTextFormField(
-            controller: nomorkartuController, hintText: "Nomor kartu"));
+          controller: nomorkartuController,
+          hintText: "Nomor kartu",
+          style: null,
+        ));
   }
 
   /// Section Widget
@@ -144,9 +136,11 @@ class EWalletCreditCardScreen extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.only(bottom: 2.v),
         child: CustomTextFormField(
-            width: 164.h,
-            controller: tanggalkadaluarsaController,
-            hintText: "Tanggal kadaluarsa"));
+          width: 164.h,
+          controller: tanggalkadaluarsaController,
+          hintText: "Tanggal kadaluarsa",
+          style: null,
+        ));
   }
 
   /// Section Widget
@@ -154,7 +148,11 @@ class EWalletCreditCardScreen extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.only(left: 17.h),
         child: CustomTextFormField(
-            width: 105.h, controller: cvvController, hintText: "CVV"));
+          width: 105.h,
+          controller: cvvController,
+          hintText: "CVV",
+          style: null,
+        ));
   }
 
   /// Section Widget
@@ -162,7 +160,7 @@ class EWalletCreditCardScreen extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.only(left: 23.h, right: 49.h),
         child: CustomTextFormField(
-            controller: namadikartuController, hintText: "Nama di kartu"));
+            controller: namadikartuController, hintText: "Nama di kartu", style: null,));
   }
 
   /// Section Widget
@@ -170,7 +168,10 @@ class EWalletCreditCardScreen extends StatelessWidget {
     return Padding(
         padding: EdgeInsets.only(left: 23.h, right: 49.h),
         child: CustomTextFormField(
-            controller: nominalTopUpController, hintText: "Nominal TopUp"));
+          controller: nominalTopUpController,
+          hintText: "Nominal TopUp",
+          style: null,
+        ));
   }
 
   /// Section Widget
@@ -181,7 +182,7 @@ class EWalletCreditCardScreen extends StatelessWidget {
             controller: alamatController,
             hintText: "Alamat",
             contentPadding:
-                EdgeInsets.symmetric(horizontal: 8.h, vertical: 20.v)));
+                EdgeInsets.symmetric(horizontal: 8.h, vertical: 20.v), style: null,));
   }
 
   /// Section Widget
@@ -191,16 +192,31 @@ class EWalletCreditCardScreen extends StatelessWidget {
         child: CustomTextFormField(
             controller: kodeposController,
             hintText: "Kode pos",
-            textInputAction: TextInputAction.done));
+            textInputAction: TextInputAction.done, style: null,));
   }
 
   /// Section Widget
   Widget _buildRp1000AkanDipotongSebagai(BuildContext context) {
-    return CustomElevatedButton(
-        height: 43.v,
-        text: "Rp.1000 akan dipotong sebagai biaya administrasi.",
-        buttonStyle: CustomButtonStyles.fillPink,
-        buttonTextStyle: CustomTextStyles.bodyMediumExtraLight14);
+    return Container(
+        width: double.maxFinite,
+        padding: EdgeInsets.symmetric(horizontal: 9.h, vertical: 20.v),
+        decoration: AppDecoration.fillPink10001,
+        child:  Container(
+                  width: 239.h,
+                  margin: EdgeInsets.only(right: 13.h),
+                  child: Text(
+                    "Rp.1000 akan dipotong sebagai biaya administrasi",
+                     maxLines: 3,
+                     overflow: TextOverflow.ellipsis,
+                     textAlign: TextAlign.center,
+                     style: TextStyle(
+                       fontSize: 14,
+                       fontWeight: FontWeight.w300,
+                       
+                      )
+                    )
+                )
+      );  
   }
 
   /// Section Widget
@@ -215,7 +231,21 @@ class EWalletCreditCardScreen extends StatelessWidget {
   }
 
   /// Navigates to the eWalletTopupScreen when the action is triggered.
-  onTapCreditCard(BuildContext context) {
+  PreferredSizeWidget appBar(BuildContext context) {
+    return CustomAppBar(
+        leadingWidth: 48.h,
+        leading: AppbarLeadingImage(
+            imagePath: ImageConstant.imgArrowLeftBlue600,
+            margin: EdgeInsets.only(left: 16.h, top: 26.v, bottom: 24.v),
+            onTap: () {
+              arrowBack(context);
+            }),
+        title: AppbarTitle(text: "Credit Card", margin: EdgeInsets.only(left: 13.h)),
+        styleType: Style.bgFill);
+  }
+
+  /// Navigates back to the previous screen.
+  arrowBack(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletTopupScreen);
   }
 

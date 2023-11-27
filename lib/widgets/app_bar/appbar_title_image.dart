@@ -28,8 +28,8 @@ class AppbarTitleImage extends StatelessWidget {
         padding: margin ?? EdgeInsets.zero,
         child: CustomImageView(
           imagePath: imagePath,
-          height: 27.v,
-          width: 32.h,
+          height: 65.v,
+          width: 65.h,
           fit: BoxFit.contain,
         ),
       ),

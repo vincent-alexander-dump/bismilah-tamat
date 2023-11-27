@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: theme,
       title: 'vincent_s_application6',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.eWalletTopupScreen,
+      initialRoute: AppRoutes.orderScreen,
       routes: AppRoutes.routes,
     );
   }

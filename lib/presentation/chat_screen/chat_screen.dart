@@ -35,8 +35,6 @@ class ChatScreen extends StatelessWidget {
                                 height: 50.adaptSize,
                                 width: 50.adaptSize),
                             Card(
-                                clipBehavior: Clip.antiAlias,
-                                elevation: 0,
                                 margin: EdgeInsets.only(
                                     left: 4.h, top: 10.v, bottom: 10.v),
                                 color: appTheme.blueGray100,
@@ -59,55 +57,11 @@ class ChatScreen extends StatelessWidget {
                                               alignment: Alignment.center,
                                               child: Text("Tunggu saya tiba",
                                                   style: CustomTextStyles
-                                                      .bodyMediumExtraLight14)),
-                                          Align(
-                                              alignment: Alignment.center,
-                                              child: Text("Tunggu saya tiba",
-                                                  style: CustomTextStyles
-                                                      .bodyMediumExtraLight14))
+                                                      .titleSmallExtraBold)),
                                         ])))
                           ])),
                       SizedBox(height: 22.v),
-                      Align(
-                          alignment: Alignment.centerRight,
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                CustomElevatedButton(
-                                    height: 30.v,
-                                    width: 147.h,
-                                    text: "Saya di depan Untar",
-                                    margin:
-                                        EdgeInsets.symmetric(vertical: 10.v),
-                                    buttonStyle:
-                                        CustomButtonStyles.fillBlueGrayTL15,
-                                    buttonTextStyle: CustomTextStyles
-                                        .bodyMediumExtraLight14),
-                                CustomImageView(
-                                    imagePath: ImageConstant.imgTestAccount,
-                                    height: 50.adaptSize,
-                                    width: 50.adaptSize,
-                                    margin: EdgeInsets.only(left: 9.h))
-                              ])),
-                      SizedBox(height: 20.v),
-                      Padding(
-                          padding: EdgeInsets.only(left: 6.h),
-                          child: Row(children: [
-                            CustomImageView(
-                                imagePath: ImageConstant.imgTestAccount,
-                                height: 50.adaptSize,
-                                width: 50.adaptSize),
-                            CustomElevatedButton(
-                                height: 30.v,
-                                width: 105.h,
-                                text: "Baik kakk..",
-                                margin: EdgeInsets.only(
-                                    left: 4.h, top: 10.v, bottom: 10.v),
-                                buttonStyle:
-                                    CustomButtonStyles.fillBlueGrayTL15,
-                                buttonTextStyle:
-                                    CustomTextStyles.bodyMediumExtraLight14)
-                          ])),
+                      
                       SizedBox(height: 5.v)
                     ])),
             bottomNavigationBar: _buildMessage(context)));
@@ -116,29 +70,30 @@ class ChatScreen extends StatelessWidget {
   /// Section Widget
   PreferredSizeWidget _buildAppBar(BuildContext context) {
     return CustomAppBar(
-        leadingWidth: 43.h,
+        leadingWidth: 50.h,
         leading: AppbarLeadingImage(
             imagePath: ImageConstant.imgArrowLeft,
-            margin: EdgeInsets.only(left: 11.h, top: 24.v, bottom: 26.v),
+            margin: EdgeInsets.only(left: 15.h, top: 24.v, bottom: 26.v),
             onTap: () {
               onTapArrowLeft(context);
             }),
         title: Padding(
-            padding: EdgeInsets.only(left: 14.h),
+            padding: EdgeInsets.only(left: 5.h),
             child: Row(children: [
               AppbarTitleImage(imagePath: ImageConstant.imgTestAccount),
               Container(
-                  height: 40.129997.v,
+                  height: 42.v,
                   width: 115.h,
-                  margin: EdgeInsets.only(top: 17.v, bottom: 7.v),
                   child: Stack(alignment: Alignment.bottomCenter, children: [
                     AppbarSubtitleOne(
                         text: "Iqbal ",
                         margin: EdgeInsets.only(
                             left: 8.h, right: 63.h, bottom: 16.v)),
                     AppbarSubtitleTwo(
-                        text: "+6281356783023",
-                        margin: EdgeInsets.only(top: 22.v))
+                      text: "+6281356783023",
+                      margin: EdgeInsets.only(top: 26.v),
+                      hintStyle: CustomTextStyles.titleSmallExtraBold,
+                    )
                   ]))
             ])),
         styleType: Style.bgFill);
@@ -147,7 +102,7 @@ class ChatScreen extends StatelessWidget {
   /// Section Widget
   Widget _buildMessage(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(left: 21.h, right: 10.h, bottom: 18.v),
+        height: 70,
         decoration: AppDecoration.fillBlue,
         child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -155,28 +110,29 @@ class ChatScreen extends StatelessWidget {
             children: [
               CustomImageView(
                   imagePath: ImageConstant.imgAdd,
-                  height: 30.v,
-                  width: 28.h,
+                  height: 45.v,
+                  width: 30.h,
                   margin: EdgeInsets.symmetric(vertical: 5.v)),
               Padding(
                   padding: EdgeInsets.only(left: 13.h),
                   child: CustomTextFormField(
-                      width: 214.h,
-                      controller: messageController,
-                      hintText: "Type a message...",
-                      hintStyle: CustomTextStyles.bodyMediumExtraLight14,
-                      textInputAction: TextInputAction.done,
-                      prefix: Container(
-                          margin: EdgeInsets.fromLTRB(11.h, 5.v, 5.h, 5.v),
-                          child: CustomImageView(
-                              imagePath: ImageConstant.imgReddit,
-                              height: 30.v,
-                              width: 28.h)),
-                      prefixConstraints: BoxConstraints(maxHeight: 40.v),
-                      contentPadding:
-                          EdgeInsets.only(top: 11.v, right: 11.h, bottom: 11.v),
-                      borderDecoration:
-                          TextFormFieldStyleHelper.fillOnPrimaryContainerTL20)),
+                    width: 214.h,
+                    controller: messageController,
+                    hintText: "Type a message...",
+                    hintStyle: CustomTextStyles.titleSmallExtraBold,
+                    textInputAction: TextInputAction.done,
+                    prefix: Container(
+                        margin: EdgeInsets.fromLTRB(11.h, 5.v, 5.h, 5.v),
+                        child: CustomImageView(
+                            imagePath: ImageConstant.imgReddit,
+                            height: 30.v,
+                            width: 28.h)),
+                    prefixConstraints: BoxConstraints(maxHeight: 40.v),
+                    contentPadding:
+                        EdgeInsets.only(top: 11.v, right: 11.h, bottom: 11.v),
+                    borderDecoration:
+                        TextFormFieldStyleHelper.fillOnPrimaryContainerTL20,
+                  )),
               CustomImageView(
                   imagePath: ImageConstant.imgCamera,
                   height: 30.v,
@@ -195,6 +151,6 @@ class ChatScreen extends StatelessWidget {
 
   /// Navigates back to the previous screen.
   onTapArrowLeft(BuildContext context) {
-    Navigator.pop(context);
+    Navigator.pushNamed(context, AppRoutes.orderScreen);
   }
 }
