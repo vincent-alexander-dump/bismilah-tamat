@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
+import 'package:vincent_s_application6/widgets/app_bar/appbar_leading_image.dart';
+import 'package:vincent_s_application6/widgets/app_bar/appbar_subtitle_one.dart';
+import 'package:vincent_s_application6/widgets/app_bar/appbar_title.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_title_button.dart';
+import 'package:vincent_s_application6/widgets/app_bar/appbar_title_button_four.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
 import 'package:vincent_s_application6/widgets/custom_checkbox_button.dart';
 
@@ -15,7 +19,7 @@ class EWalletMainScreen extends StatelessWidget {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-            appBar: _buildAppBar(context),
+            appBar: appBar(context),
             body: Container(
                 width: double.maxFinite,
                 padding: EdgeInsets.symmetric(vertical: 17.v),
@@ -39,15 +43,22 @@ class EWalletMainScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
+    PreferredSizeWidget appBar(BuildContext context) {
     return CustomAppBar(
-        height: 65.v,
-        title: AppbarTitleButton(
-            margin: EdgeInsets.only(left: 13.h),
+        leadingWidth: 48.h,
+        leading: AppbarLeadingImage(
+            imagePath: ImageConstant.imgArrowLeftBlue600,
+            margin: EdgeInsets.only(left: 16.h, top: 26.v, bottom: 24.v),
             onTap: () {
-              onTapMyWallet(context);
+              arrowBack(context);
             }),
+        title: AppbarTitle(text: "E-Wallet", margin: EdgeInsets.only(left: 13.h)),
         styleType: Style.bgFill);
+  }
+
+  /// Navigates back to the previous screen.
+  arrowBack(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.mainScreenPage);
   }
 
   /// Section Widget
@@ -56,8 +67,7 @@ class EWalletMainScreen extends StatelessWidget {
         alignment: Alignment.center,
         child: Container(
             width: 339.h,
-            margin: EdgeInsets.symmetric(horizontal: 10.h),
-            padding: EdgeInsets.symmetric(horizontal: 6.h, vertical: 5.v),
+            padding: EdgeInsets.symmetric(vertical: 5.v),
             decoration: AppDecoration.fillPink100011
                 .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
             child: Column(
@@ -65,7 +75,7 @@ class EWalletMainScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                      height: 54.v,
+                      height: 45.v,
                       width: 311.h,
                       child: Stack(alignment: Alignment.topCenter, children: [
                         Align(
@@ -82,18 +92,7 @@ class EWalletMainScreen extends StatelessWidget {
                                   Text("100.000",
                                       style: theme.textTheme.displaySmall)
                                 ]))),
-                        Align(
-                            alignment: Alignment.topCenter,
-                            child: CustomCheckboxButton(
-                                alignment: Alignment.topCenter,
-                                width: 311.h,
-                                text: "Balance:",
-                                value: balance,
-                                padding: EdgeInsets.symmetric(vertical: 4.v),
-                                isRightCheck: true,
-                                onChange: (value) {
-                                  balance = value;
-                                }))
+                      
                       ])),
                   SizedBox(height: 2.v),
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -187,52 +186,70 @@ class EWalletMainScreen extends StatelessWidget {
                                     ])))
                       ])),
               SizedBox(height: 16.v),
-              Padding(
-                  padding: EdgeInsets.only(left: 22.h),
+               Padding(
+                  padding: EdgeInsets.only(left: 22.h, right: 3.h),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        GestureDetector(
-                            onTap: () {
-                              onTapView1(context);
-                            },
-                            child: SizedBox(
-                                height: 79.v,
-                                width: 67.h,
-                                child: Stack(
-                                    alignment: Alignment.topLeft,
-                                    children: [
-                                      Align(
-                                          alignment: Alignment.center,
-                                          child: Container(
-                                              height: 79.v,
-                                              width: 64.h,
-                                              decoration: BoxDecoration(
-                                                  color: appTheme.pink50))),
-                                      _buildSixtyEight(context,
-                                          plusMath: ImageConstant.imgPlusMath,
-                                          topUp: "Top-Up")
-                                    ]))),
+                        Container(
+                            height: 76.v,
+                            width: 60.h,
+                            margin: EdgeInsets.only(bottom: 4.v),
+                            child:
+                                Stack(alignment: Alignment.center, children: [
+                              Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                      height: 71.v,
+                                      width: 54.h,
+                                      decoration: BoxDecoration(
+                                          color: appTheme.pink50))),
+                              _buildSixtyEight(context,
+                                  plusMath: ImageConstant.imgPlusMath,
+                                  topUp: "Top Up", onTapSixtyEight: () {
+                                onTapView1(context);
+                              })
+                            ])),
                         GestureDetector(
                             onTap: () {
                               onTapView2(context);
                             },
                             child: SizedBox(
-                                height: 79.v,
-                                width: 66.h,
+                                height: 81.v,
+                                width: 68.h,
                                 child: Stack(
-                                    alignment: Alignment.centerLeft,
+                                    alignment: Alignment.topCenter,
                                     children: [
                                       Align(
-                                          alignment: Alignment.center,
+                                          alignment: Alignment.centerRight,
                                           child: Container(
                                               height: 79.v,
                                               width: 64.h,
                                               decoration: BoxDecoration(
                                                   color: appTheme.pink50))),
-                                      _buildSixtyEight(context,
-                                          plusMath: ImageConstant.imgPaperPlane,
-                                          topUp: "Transfer")
+                                      Align(
+                                          alignment: Alignment.topCenter,
+                                          child: SizedBox(
+                                              height: 74.v,
+                                              width: 68.h,
+                                              child: Stack(
+                                                  alignment: Alignment.topLeft,
+                                                  children: [
+                                                    Align(
+                                                        alignment: Alignment
+                                                            .bottomCenter,
+                                                        child: Text(
+                                                            "Transfer",
+                                                            style: CustomTextStyles
+                                                                .labelLargeInterBlack900)),
+                                                    CustomImageView(
+                                                        imagePath: ImageConstant
+                                                            .imgPaperPlane,
+                                                        height: 65.adaptSize,
+                                                        width: 65.adaptSize,
+                                                        alignment:
+                                                            Alignment.topLeft)
+                                                  ])))
                                     ])))
                       ])),
               SizedBox(height: 6.v)
@@ -258,11 +275,6 @@ class EWalletMainScreen extends StatelessWidget {
               style: CustomTextStyles.labelLargeInterBlack900
                   .copyWith(color: appTheme.black900))
         ]));
-  }
-
-  /// Navigates to the mainScreenContainerScreen when the action is triggered.
-  onTapMyWallet(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.mainScreenContainerScreen);
   }
 
   /// Navigates to the eWalletTransactionHistoryScreen when the action is triggered.
