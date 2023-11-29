@@ -138,7 +138,6 @@ class CustomTextFormField extends StatelessWidget {
       );
 }
 
-/// Extension on [CustomTextFormField] to facilitate inclusion of all types of border style etc
 extension TextFormFieldStyleHelper on CustomTextFormField {
   static OutlineInputBorder get fillOnPrimaryContainer => OutlineInputBorder(
         borderRadius: BorderRadius.circular(15.h),

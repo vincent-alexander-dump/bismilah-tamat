@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 import 'package:vincent_s_application6/widgets/custom_elevated_button.dart';
 
-// ignore_for_file: must_be_immutable
 class EWalletSuccessPaymentScreen extends StatelessWidget {
   EWalletSuccessPaymentScreen({Key? key}) : super(key: key);
 
@@ -24,7 +23,7 @@ class EWalletSuccessPaymentScreen extends StatelessWidget {
                           style: theme.textTheme.titleLarge)),
                   SizedBox(height: 99.v),
                   Text("Transaksi anda sukses!",
-                      style: CustomTextStyles.headlineLargeBlack900),
+                      style: CustomTextStyles.displayLargeBlack900),
                   SizedBox(height: 33.v),
                   CustomImageView(
                       imagePath: ImageConstant.imgApproval,
@@ -38,26 +37,23 @@ class EWalletSuccessPaymentScreen extends StatelessWidget {
                           "Transaksi anda sedang diproses, maksimal memakan waktu sampai 24 jam.",
                           maxLines: 3,
                           overflow: TextOverflow.ellipsis,
-                          style: CustomTextStyles.bodyLargeLight)),
+                          style: CustomTextStyles.bodyLargeExtraLight)),
                   SizedBox(height: 5.v)
                 ])),
             bottomNavigationBar: buttonBack(context)));
   }
 
-  /// Section Widget
 
-  /// Section Widget
   Widget buttonBack(BuildContext context) {
     return CustomElevatedButton(
         text: "BACK",
         margin: EdgeInsets.only(left: 21.h, right: 23.h, bottom: 19.v),
         onPressed: () {
-          toEwalletMainScreen(context);
+          back(context);
         });
   }
 
-  /// Navigates to the eWalletMainScreen when the action is triggered.
-  toEwalletMainScreen(BuildContext context) {
+  back(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletMainScreen);
   }
 }

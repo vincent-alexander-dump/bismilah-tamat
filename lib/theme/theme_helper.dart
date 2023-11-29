@@ -199,63 +199,49 @@ class TextThemes {
       );
 }
 
-/// Class containing the supported color schemes.
 class ColorSchemes {
   static final primaryColorScheme = ColorScheme.light(
-    // Primary colors
     primary: Color(0XFF2ECC71),
     primaryContainer: Color(0XFFE70011),
     secondaryContainer: Color(0XFFF39C12),
 
-    // Error colors
     errorContainer: Color(0XFF237D1B),
     onError: Color(0XFF4CAF50),
 
-    // On colors(text colors)
     onPrimary: Color(0XFF101820),
     onPrimaryContainer: Color(0XFFFFFFFF),
   );
 }
 
-/// Class containing custom colors for a primary theme.
 class PrimaryColors {
-  // Black
   Color get black900 => Color(0XFF000000);
 
-  // Blue
   Color get blue300 => Color(0XFF5DADE2);
   Color get blue600 => Color(0XFF3498DB);
   Color get blueA400 => Color(0XFF2F88FF);
 
-  // BlueGray
   Color get blueGray100 => Color(0XFFCCCCCC);
   Color get blueGray10001 => Color(0XFFD5D8DC);
   Color get blueGray10002 => Color(0XFFD9D9D9);
   Color get blueGray400 => Color(0XFF888888);
   Color get blueGray800 => Color(0XFF37474F);
 
-  // Gray
   Color get gray200 => Color(0XFFF3ECEC);
   Color get gray400 => Color(0XFFC5C5C5);
   Color get gray500 => Color(0XFF9A9999);
   Color get gray600 => Color(0XFF7D7D7D);
 
-  // LightBlue
   Color get lightBlue900 => Color(0XFF1F618D);
 
-  // Orange
   Color get orange300 => Color(0XFFF7B956);
 
-  // Pink
   Color get pink100 => Color(0XFFFFB0BC);
   Color get pink10001 => Color(0XFFFFB6C1);
   Color get pink50 => Color(0XFFFFE7EA);
   Color get pink5001 => Color(0XFFFFE5E9);
 
-  // Red
   Color get redA200 => Color(0XFFFF526C);
 
-  // White
   Color get whiteA700 => Color(0XFFFFFEFE);
 }
 

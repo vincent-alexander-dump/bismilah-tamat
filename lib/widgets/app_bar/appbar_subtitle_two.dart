@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 
-// ignore: must_be_immutable
 class AppbarSubtitleTwo extends StatelessWidget {
   AppbarSubtitleTwo({
     Key? key,
@@ -28,7 +27,7 @@ class AppbarSubtitleTwo extends StatelessWidget {
         padding: margin ?? EdgeInsets.zero,
         child: Text(
           text,
-          style: CustomTextStyles.bodyMediumExtraLight.copyWith(
+          style: CustomTextStyles.bodyMediumLight.copyWith(
             color: appTheme.black900,
           ),
         ),

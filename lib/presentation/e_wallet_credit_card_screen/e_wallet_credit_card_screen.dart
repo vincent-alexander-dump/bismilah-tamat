@@ -6,23 +6,22 @@ import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
 import 'package:vincent_s_application6/widgets/custom_elevated_button.dart';
 import 'package:vincent_s_application6/widgets/custom_text_form_field.dart';
 
-// ignore_for_file: must_be_immutable
 class EWalletCreditCardScreen extends StatelessWidget {
   EWalletCreditCardScreen({Key? key}) : super(key: key);
 
-  TextEditingController nomorkartuController = TextEditingController();
+  final TextEditingController nomorkartuController = TextEditingController();
 
-  TextEditingController tanggalkadaluarsaController = TextEditingController();
+  final TextEditingController tanggalkadaluarsaController = TextEditingController();
 
-  TextEditingController cvvController = TextEditingController();
+  final TextEditingController cvvController = TextEditingController();
 
-  TextEditingController namadikartuController = TextEditingController();
+  final TextEditingController namadikartuController = TextEditingController();
 
-  TextEditingController nominalTopUpController = TextEditingController();
+  final TextEditingController nominalTopUpController = TextEditingController();
 
-  TextEditingController alamatController = TextEditingController();
+  final TextEditingController alamatController = TextEditingController();
 
-  TextEditingController kodeposController = TextEditingController();
+  final TextEditingController kodeposController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +35,7 @@ class EWalletCreditCardScreen extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildInformasiKartu(context),
+                      notifikasi(context),
                       SizedBox(height: 18.v),
                       Padding(
                           padding: EdgeInsets.only(left: 23.h),
@@ -57,37 +56,36 @@ class EWalletCreditCardScreen extends StatelessWidget {
                                 margin: EdgeInsets.only(left: 14.h))
                           ])),
                       SizedBox(height: 13.v),
-                      _buildNomorkartu(context),
+                      nomorKartu(context),
                       SizedBox(height: 13.v),
                       Padding(
                           padding: EdgeInsets.only(left: 23.h, right: 49.h),
                           child: Row(children: [
-                            _buildTanggalkadaluarsa(context),
-                            _buildCvv(context)
+                            tanggalKadaluarsa(context),
+                            cvv(context)
                           ])),
                       SizedBox(height: 10.v),
-                      _buildNamadikartu(context),
+                      nama(context),
                       SizedBox(height: 12.v),
-                      _buildNominalTopUp(context),
+                      nominal(context),
                       SizedBox(height: 40.v),
                       Padding(
                           padding: EdgeInsets.only(left: 23.h),
                           child: Text("Alamat tagihan",
                               style: CustomTextStyles.titleMediumBold)),
                       SizedBox(height: 21.v),
-                      _buildAlamat(context),
+                      alamat(context),
                       SizedBox(height: 14.v),
-                      _buildKodepos(context),
+                      kodepos(context),
                       SizedBox(height: 25.v),
-                      _buildRp1000AkanDipotongSebagai(context),
+                      warning(context),
                       SizedBox(height: 13.v),
-                      _buildCONFIRM(context),
+                      confirm(context),
                       SizedBox(height: 5.v)
                     ]))));
   }
 
-  /// Section Widget
-  Widget _buildInformasiKartu(BuildContext context) {
+  Widget notifikasi(BuildContext context) {
     return Container(
         width: double.maxFinite,
         padding: EdgeInsets.symmetric(horizontal: 9.h, vertical: 8.v),
@@ -119,8 +117,7 @@ class EWalletCreditCardScreen extends StatelessWidget {
         ]));
   }
 
-  /// Section Widget
-  Widget _buildNomorkartu(BuildContext context) {
+  Widget nomorKartu(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 23.h, right: 49.h),
         child: CustomTextFormField(
@@ -130,8 +127,7 @@ class EWalletCreditCardScreen extends StatelessWidget {
         ));
   }
 
-  /// Section Widget
-  Widget _buildTanggalkadaluarsa(BuildContext context) {
+  Widget tanggalKadaluarsa(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(bottom: 2.v),
         child: CustomTextFormField(
@@ -142,8 +138,7 @@ class EWalletCreditCardScreen extends StatelessWidget {
         ));
   }
 
-  /// Section Widget
-  Widget _buildCvv(BuildContext context) {
+  Widget cvv(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 17.h),
         child: CustomTextFormField(
@@ -154,16 +149,14 @@ class EWalletCreditCardScreen extends StatelessWidget {
         ));
   }
 
-  /// Section Widget
-  Widget _buildNamadikartu(BuildContext context) {
+  Widget nama(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 23.h, right: 49.h),
         child: CustomTextFormField(
             controller: namadikartuController, hintText: "Nama di kartu", style: null,));
   }
 
-  /// Section Widget
-  Widget _buildNominalTopUp(BuildContext context) {
+  Widget nominal(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 23.h, right: 49.h),
         child: CustomTextFormField(
@@ -173,8 +166,7 @@ class EWalletCreditCardScreen extends StatelessWidget {
         ));
   }
 
-  /// Section Widget
-  Widget _buildAlamat(BuildContext context) {
+  Widget alamat(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 23.h, right: 49.h),
         child: CustomTextFormField(
@@ -184,8 +176,7 @@ class EWalletCreditCardScreen extends StatelessWidget {
                 EdgeInsets.symmetric(horizontal: 8.h, vertical: 20.v), style: null,));
   }
 
-  /// Section Widget
-  Widget _buildKodepos(BuildContext context) {
+  Widget kodepos(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 23.h, right: 49.h),
         child: CustomTextFormField(
@@ -194,8 +185,7 @@ class EWalletCreditCardScreen extends StatelessWidget {
             textInputAction: TextInputAction.done, style: null,));
   }
 
-  /// Section Widget
-  Widget _buildRp1000AkanDipotongSebagai(BuildContext context) {
+  Widget warning(BuildContext context) {
     return Container(
         width: double.maxFinite,
         padding: EdgeInsets.symmetric(horizontal: 9.h, vertical: 20.v),
@@ -218,18 +208,16 @@ class EWalletCreditCardScreen extends StatelessWidget {
       );  
   }
 
-  /// Section Widget
-  Widget _buildCONFIRM(BuildContext context) {
+  Widget confirm(BuildContext context) {
     return CustomElevatedButton(
         text: "CONFIRM",
         margin: EdgeInsets.only(left: 21.h, right: 23.h),
         onPressed: () {
-          onTapCONFIRM(context);
+          backConfirm(context);
         },
         alignment: Alignment.center);
   }
 
-  /// Navigates to the eWalletTopupScreen when the action is triggered.
   PreferredSizeWidget appBar(BuildContext context) {
     return CustomAppBar(
         leadingWidth: 48.h,
@@ -237,19 +225,17 @@ class EWalletCreditCardScreen extends StatelessWidget {
             imagePath: ImageConstant.imgArrowLeftBlue600,
             margin: EdgeInsets.only(left: 16.h, top: 26.v, bottom: 24.v),
             onTap: () {
-              arrowBack(context);
+              back(context);
             }),
         title: AppbarTitle(text: "Credit Card", margin: EdgeInsets.only(left: 13.h)),
         styleType: Style.bgFill);
   }
 
-  /// Navigates back to the previous screen.
-  arrowBack(BuildContext context) {
+  back(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletTopupScreen);
   }
 
-  /// Navigates to the eWalletSuccessPaymentScreen when the action is triggered.
-  onTapCONFIRM(BuildContext context) {
+  backConfirm(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletSuccessPaymentScreen);
   }
 }

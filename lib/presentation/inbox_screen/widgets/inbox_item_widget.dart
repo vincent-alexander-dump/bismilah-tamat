@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 
-// ignore: must_be_immutable
 class InboxItemWidget extends StatelessWidget {
   const InboxItemWidget({Key? key})
       : super(
@@ -11,7 +10,7 @@ class InboxItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: AppDecoration.fillBluegray10001,
+      decoration: AppDecoration.fillBlueGray,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -60,13 +59,13 @@ class InboxItemWidget extends StatelessWidget {
                                 TextSpan(
                                   text:
                                       "Ayo naik FlowRide dari tanggal 17 Agustus hingga 20 Agustus dan dapatkan cashback hingga ",
-                                  style: CustomTextStyles.bodySmallBlack90012_1,
+                                  style: CustomTextStyles.bodySmallBlack90012,
                                   
                                 ),
                                 TextSpan(
                                   text: "50%!",
                                   style:
-                                      CustomTextStyles.labelLargeBlack900Bold_1,
+                                      CustomTextStyles.labelLargeBlack900Bold,
                                 ),
                               ],
                             ),

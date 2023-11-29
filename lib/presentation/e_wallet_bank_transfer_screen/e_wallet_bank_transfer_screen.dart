@@ -13,15 +13,15 @@ class EWalletBankTransferScreen extends StatelessWidget {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-            appBar: _buildAppBar(context),
+            appBar: appBar(context),
             body: SizedBox(
                 width: double.maxFinite,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      _buildAlarm(context),
+                      notifikasi(context),
                       SizedBox(height: 15.v),
-                      _buildBiayaAdmin(context),
+                      admin(context),
                       SizedBox(height: 11.v),
                       Divider(color: appTheme.gray400),
                       SizedBox(height: 13.v),
@@ -50,7 +50,7 @@ class EWalletBankTransferScreen extends StatelessWidget {
                           child: Padding(
                               padding: EdgeInsets.only(left: 45.h),
                               child: Text("No. Virtual Account :",
-                                  style: CustomTextStyles.bodyLargeLight_1))),
+                                  style: CustomTextStyles.titleSmallSemiBold15))),
                       SizedBox(height: 10.v),
                       Padding(
                           padding: EdgeInsets.only(right: 17.h),
@@ -78,7 +78,7 @@ class EWalletBankTransferScreen extends StatelessWidget {
                                               alignment: Alignment.centerRight,
                                               child: Text("Salin",
                                                   style: CustomTextStyles
-                                                      .titleSmallRedA200))
+                                                      .titleSmallSemiBold))
                                         ]))
                               ])),
                       SizedBox(height: 4.v),
@@ -95,16 +95,13 @@ class EWalletBankTransferScreen extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                   style: CustomTextStyles.bodyMediumLight_1))),
                       SizedBox(height: 24.v),
-                      _buildCaraTopUpmenggunakanVirtualAcc(context),
+                      tutorialTopup(context),
                       SizedBox(height: 5.v)
                     ])),
-            bottomNavigationBar: _buildCONFIRM(context)));
+            bottomNavigationBar: confirm(context)));
   }
 
-  /// Section Widget
-  
-  /// Section Widget
-  Widget _buildAlarm(BuildContext context) {
+    Widget notifikasi(BuildContext context) {
     return Container(
         width: double.maxFinite,
         padding: EdgeInsets.symmetric(horizontal: 8.h, vertical: 9.v),
@@ -119,8 +116,7 @@ class EWalletBankTransferScreen extends StatelessWidget {
         ]));
   }
 
-  /// Section Widget
-  Widget _buildBiayaAdmin(BuildContext context) {
+  Widget admin(BuildContext context) {
     return Align(
         alignment: Alignment.center,
         child: Padding(
@@ -134,8 +130,7 @@ class EWalletBankTransferScreen extends StatelessWidget {
                 ])));
   }
 
-  /// Section Widget
-  Widget _buildCaraTopUpmenggunakanVirtualAcc(BuildContext context) {
+  Widget tutorialTopup(BuildContext context) {
   return Container(
     width: MediaQuery.of(context).size.width,
     child: Container(
@@ -157,7 +152,7 @@ class EWalletBankTransferScreen extends StatelessWidget {
               maxLines: 20,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 14.0, // Set your desired font size
+                fontSize: 14.0,
               ),
             ),
           ),
@@ -166,37 +161,34 @@ class EWalletBankTransferScreen extends StatelessWidget {
     ),
   );
 }
-  /// Section Widget
-  Widget _buildCONFIRM(BuildContext context) {
+  Widget confirm(BuildContext context) {
     return CustomElevatedButton(
         text: "CONFIRM",
         margin: EdgeInsets.only(left: 21.h, right: 23.h, bottom: 20.v),
         onPressed: () {
-          onTapCONFIRM(context);
+          backConfirm(context);
         });
   }
 
-  /// Navigates back to the previous screen.
-  onTapArrowLeft(BuildContext context) {
+  back(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletTopupScreen);
   }
 
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
+  PreferredSizeWidget appBar(BuildContext context) {
     return CustomAppBar(
         leadingWidth: 47.h,
         leading: AppbarLeadingImage(
             imagePath: ImageConstant.imgArrowLeft,
             margin: EdgeInsets.only(left: 15.h, top: 25.v, bottom: 25.v),
             onTap: () {
-              onTapArrowLeft(context);
+              back(context);
             }),
         title:
             AppbarSubtitleOne(text: "Bank Transfer", margin: EdgeInsets.only(left: 8.h)),
         styleType: Style.bgFill);
   }
 
-  /// Navigates to the eWalletSuccessPaymentScreen when the action is triggered.
-  onTapCONFIRM(BuildContext context) {
+  backConfirm(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletSuccessPaymentScreen);
   }
 }

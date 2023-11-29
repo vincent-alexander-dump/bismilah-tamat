@@ -3,15 +3,14 @@ import 'package:vincent_s_application6/core/app_export.dart';
 import 'package:vincent_s_application6/widgets/custom_elevated_button.dart';
 import 'package:vincent_s_application6/widgets/custom_text_form_field.dart';
 
-// ignore_for_file: must_be_immutable
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({Key? key}) : super(key: key);
 
-  TextEditingController fullNameController = TextEditingController();
+  final TextEditingController fullNameController = TextEditingController();
 
-  TextEditingController emailController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class RegisterScreen extends StatelessWidget {
                       Align(
                           alignment: Alignment.center,
                           child: Text("Create your account",
-                              style: CustomTextStyles.bodyMediumLightblue900)),
+                              style: CustomTextStyles.bodySmallOnPrimary12)),
                       SizedBox(height: 28.v),
                       Padding(
                           padding: EdgeInsets.only(left: 17.h),
@@ -77,7 +76,7 @@ class RegisterScreen extends StatelessWidget {
                                             .bodySmallOnPrimary12),
                                     TextSpan(
                                         text: "Login",
-                                        style: CustomTextStyles.bodySmall12_1)
+                                        style: CustomTextStyles.bodySmallOnPrimary12)
                                   ]),
                                   textAlign: TextAlign.left))),
                       SizedBox(height: 40.v),
@@ -86,7 +85,6 @@ class RegisterScreen extends StatelessWidget {
                     ]))));
   }
 
-  /// Section Widget
   Widget fullName(BuildContext context) {
     return CustomTextFormField(
         controller: fullNameController,
@@ -97,7 +95,6 @@ class RegisterScreen extends StatelessWidget {
         fillColor: appTheme.lightBlue900);
   }
 
-  /// Section Widget
   Widget email(BuildContext context) {
     return CustomTextFormField(
         controller: emailController,
@@ -108,7 +105,6 @@ class RegisterScreen extends StatelessWidget {
         fillColor: appTheme.lightBlue900);
   }
 
-  /// Section Widget
   Widget password(BuildContext context) {
     return CustomTextFormField(
         controller: passwordController,
@@ -120,7 +116,6 @@ class RegisterScreen extends StatelessWidget {
         fillColor: appTheme.lightBlue900);
   }
 
-  /// Section Widget
   Widget buttonRegister(BuildContext context) {
     return CustomElevatedButton(
         height: 51.v,
@@ -132,12 +127,10 @@ class RegisterScreen extends StatelessWidget {
         });
   }
 
-  /// Navigates to the loginScreen when the action is triggered.
   toLogin(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.loginScreen);
   }
 
-  /// Navigates to the mainScreenContainerScreen when the action is triggered.
   toMainScreen(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.mainScreenPage);
   }

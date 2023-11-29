@@ -7,14 +7,10 @@ import 'package:grouped_list/grouped_list.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
 
-// ignore: must_be_immutable
 class EWalletTransactionHistoryScreen extends StatelessWidget {
-  EWalletTransactionHistoryScreen({Key? key})
-      : super(
-          key: key,
-        );
+  EWalletTransactionHistoryScreen({Key? key}): super(key: key,);
 
-  List thismonthItemList = [
+  final List thismonthItemList = [
     {'id': 1, 'groupBy': "This Month"},
     {'id': 2, 'groupBy': "This Month"},
     {'id': 3, 'groupBy': "This Month"},
@@ -43,7 +39,7 @@ class EWalletTransactionHistoryScreen extends StatelessWidget {
                       horizontal: 14.h,
                       vertical: 27.v,
                     ),
-                    decoration: AppDecoration.fillPink5001,
+                    decoration: AppDecoration.fillPink,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -88,10 +84,9 @@ class EWalletTransactionHistoryScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
   Widget balanceBox(BuildContext context) {
     return Container(
-      decoration: AppDecoration.fillPink100,
+      decoration: AppDecoration.fillPink10001,
       child: Column(
         children: [
           
@@ -128,7 +123,6 @@ class EWalletTransactionHistoryScreen extends StatelessWidget {
     );
   }
 
-  /// Section Widget
   Widget historyData(BuildContext context) {
     return Expanded(
       child: Padding(
@@ -172,14 +166,13 @@ class EWalletTransactionHistoryScreen extends StatelessWidget {
             imagePath: ImageConstant.imgArrowLeftBlue600,
             margin: EdgeInsets.only(left: 16.h, top: 26.v, bottom: 24.v),
             onTap: () {
-              arrowBack(context);
+              back(context);
             }),
         title: AppbarTitle(text: "Transaction History", margin: EdgeInsets.only(left: 13.h)),
         styleType: Style.bgFill);
   }
 
-  /// Navigates back to the previous screen.
-  arrowBack(BuildContext context) {
+  back(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletMainScreen);
   }
 }

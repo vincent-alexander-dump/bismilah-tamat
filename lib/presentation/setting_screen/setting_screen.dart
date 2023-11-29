@@ -1,13 +1,11 @@
-// ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 import 'package:vincent_s_application6/presentation/help_screen/help_screen.dart';
 import 'package:vincent_s_application6/presentation/inbox_screen/inbox_screen.dart';
-import 'package:vincent_s_application6/presentation/subscribe_tab_container_screen/subscribe_tab_container_screen.dart';
+import 'package:vincent_s_application6/presentation/subscribe_screen/subscribe_screen.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_leading_image.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_title.dart';
-import 'package:vincent_s_application6/widgets/app_bar/appbar_title_button.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
 
 class SettingScreen extends StatelessWidget {
@@ -23,7 +21,7 @@ class SettingScreen extends StatelessWidget {
                 width: double.maxFinite,
                 padding: EdgeInsets.symmetric(vertical: 8.v),
                 child: Column(children: [
-                  _buildTestAccount(context),
+                  informasiAkun(context),
                   SizedBox(height: 18.v),
                   Align(
                       alignment: Alignment.centerLeft,
@@ -32,9 +30,9 @@ class SettingScreen extends StatelessWidget {
                           child: Text("Account",
                               style: theme.textTheme.titleMedium))),
                   SizedBox(height: 5.v),
-                  _buildMySpace(context),
+                  subscribe(context),
                   Divider(indent: 18.h, endIndent: 13.h),
-                  _buildTwentyFive(context),
+                  payment(context),
                   Divider(indent: 21.h, endIndent: 12.h),
                   help(context),
                   Divider(indent: 18.h, endIndent: 13.h),
@@ -46,17 +44,17 @@ class SettingScreen extends StatelessWidget {
                           child: Text("Other Info",
                               style: CustomTextStyles.titleSmallMedium))),
                   SizedBox(height: 20.v),
-                  _buildTwentyNine(context),
+                  inbox(context),
                   Divider(indent: 18.h, endIndent: 13.h),
                   Padding(
                       padding: EdgeInsets.only(left: 1.h),
-                      child: _buildTwentySix(context,
+                      child: otherButton(context,
                           heroiconsQuest: ImageConstant.imgStreamlineInte,
                           helpReport: "Rating")),
                   Divider(indent: 18.h, endIndent: 13.h),
                   Padding(
                       padding: EdgeInsets.only(left: 1.h),
-                      child: _buildTwentySix(context,
+                      child: otherButton(context,
                           heroiconsQuest:
                               ImageConstant.imgMaterialSymbolsLogout,
                           helpReport: "Logout Account")),
@@ -65,8 +63,7 @@ class SettingScreen extends StatelessWidget {
                 ]))));
   }
 
-  /// Section Widget
-  Widget _buildTestAccount(BuildContext context) {
+  Widget informasiAkun(BuildContext context) {
     return Align(
         alignment: Alignment.centerLeft,
         child: Padding(
@@ -113,14 +110,12 @@ class SettingScreen extends StatelessWidget {
             ])));
   }
 
-  /// Section Widget
-Widget _buildMySpace(BuildContext context) {
+Widget subscribe(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      // Navigate to another screen when the SizedBox is clicked
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => SubscribeTabContainerScreen()), // Replace AnotherScreen() with the screen you want to navigate to
+        MaterialPageRoute(builder: (context) => SubscribeScreen())
       );
     },
     child: SizedBox(
@@ -135,7 +130,7 @@ Widget _buildMySpace(BuildContext context) {
             width: 359.h,
             alignment: Alignment.center,
           ),
-          _buildTwentySix(context,
+          otherButton(context,
             heroiconsQuest: ImageConstant.imgMyspace,
             helpReport: "Subscribe"
           ),
@@ -148,10 +143,9 @@ Widget _buildMySpace(BuildContext context) {
 Widget help(BuildContext context) {
   return GestureDetector(
     onTap: () {
-      // Navigate to another screen when the SizedBox is clicked
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HelpScreen()), // Replace AnotherScreen() with the screen you want to navigate to
+        MaterialPageRoute(builder: (context) => HelpScreen()),
       );
     },
     child: SizedBox(
@@ -166,7 +160,7 @@ Widget help(BuildContext context) {
             width: 359.h,
             alignment: Alignment.center,
           ),
-          _buildTwentySix(context,
+          otherButton(context,
             heroiconsQuest: ImageConstant.imgMyspace,
             helpReport: "Help & Report"
           ),
@@ -177,8 +171,7 @@ Widget help(BuildContext context) {
 }
 
 
-  /// Section Widget
-  Widget _buildTwentyFive(BuildContext context) {
+  Widget payment(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(left: 1.h),
         padding: EdgeInsets.symmetric(horizontal: 19.h, vertical: 6.v),
@@ -205,13 +198,12 @@ Widget help(BuildContext context) {
             ]));
   }
 
-  /// Section Widget
-Widget _buildTwentyNine(BuildContext context) {
+Widget inbox(BuildContext context) {
   return GestureDetector(
     onTap: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => InboxScreen()), // Replace AnotherScreen() with the screen you want to navigate to
+        MaterialPageRoute(builder: (context) => InboxScreen()),
       );
     },
     child: Container(
@@ -244,8 +236,7 @@ Widget _buildTwentyNine(BuildContext context) {
   );
 }
 
-  /// Common widget
-  Widget _buildTwentySix(
+  Widget otherButton(
     BuildContext context, {
     required String heroiconsQuest,
     required String helpReport,
@@ -273,7 +264,6 @@ Widget _buildTwentyNine(BuildContext context) {
             ]));
   }
 
-  /// Navigates to the mainScreenContainerScreen when the action is triggered.
   PreferredSizeWidget appBar(BuildContext context) {
     return CustomAppBar(
         leadingWidth: 48.h,
@@ -281,14 +271,13 @@ Widget _buildTwentyNine(BuildContext context) {
             imagePath: ImageConstant.imgArrowLeftBlue600,
             margin: EdgeInsets.only(left: 16.h, top: 26.v, bottom: 24.v),
             onTap: () {
-              arrowBack(context);
+              back(context);
             }),
         title: AppbarTitle(text: "My Profile", margin: EdgeInsets.only(left: 13.h)),
         styleType: Style.bgFill);
   }
 
-  /// Navigates back to the previous screen.
-  arrowBack(BuildContext context) {
+  back(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.mainScreenPage);
   }
 }

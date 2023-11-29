@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 import 'package:vincent_s_application6/presentation/e_wallet_transaction_details_screen/e_wallet_transaction_details_screen.dart';
 
-// ignore: must_be_immutable
 class ThismonthItemWidget extends StatelessWidget {
   const ThismonthItemWidget({Key? key})
       : super(
@@ -14,14 +13,14 @@ class ThismonthItemWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(right: 4.h),
       child: InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => EWalletTransactionDetailsScreen(),
-                              ),
-                            );
-                          },
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EWalletTransactionDetailsScreen(),
+            ),
+          );
+      },
       child: Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +48,7 @@ class ThismonthItemWidget extends StatelessWidget {
                 SizedBox(height: 6.v),
                 Text(
                   "20 June 2023, 00.56",
-                  style: CustomTextStyles.bodySmallBlack900Light11,
+                  style: CustomTextStyles.bodySmallBlack900Light12,
                 ),
               ],
             ),
@@ -62,7 +61,7 @@ class ThismonthItemWidget extends StatelessWidget {
             ),
             child: Text(
               "-Rp.250.000",
-              style: CustomTextStyles.labelLargePrimaryContainer,
+              style: theme.textTheme.labelMedium,
             ),
           ),
         ],

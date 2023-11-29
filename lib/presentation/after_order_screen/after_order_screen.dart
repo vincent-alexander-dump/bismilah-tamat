@@ -3,14 +3,12 @@ import 'package:vincent_s_application6/core/app_export.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_leading_image.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_title.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
-import 'package:vincent_s_application6/widgets/custom_elevated_button.dart';
-import 'package:vincent_s_application6/widgets/custom_icon_button.dart';
 import 'package:vincent_s_application6/widgets/custom_text_form_field.dart';
 
 class AfterOrderScreen extends StatelessWidget {
   AfterOrderScreen({Key? key}) : super(key: key);
 
-  TextEditingController messageController = TextEditingController();
+  final TextEditingController messageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +18,7 @@ class AfterOrderScreen extends StatelessWidget {
         body: Stack(
           alignment: Alignment.bottomCenter,
           children: [
-            _buildBackgroundImage(),
+            mapsBackground(),
             Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -34,9 +32,9 @@ class AfterOrderScreen extends StatelessWidget {
                       child: Stack(
                         alignment: Alignment.topCenter,
                         children: [
-                          _buildAngie(context),
-                          _buildVector(context),
-                          _buildMdiLocation(context),
+                          profileDriver(context),
+                          lokasi2(context),
+                          lokasi1(context),
                         ],
                       ),
                     ),
@@ -50,7 +48,7 @@ class AfterOrderScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBackgroundImage() {
+  Widget mapsBackground() {
     return CustomImageView(
       imagePath: ImageConstant.imgRectangle730x360,
       height: 730.v,
@@ -59,15 +57,15 @@ class AfterOrderScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAngie(BuildContext context) {
+  Widget profileDriver(BuildContext context) {
     return Align(
       alignment: Alignment.bottomCenter,
       child: Container(
         width: double.maxFinite,
         margin: EdgeInsets.only(top: 500.v),
         padding: EdgeInsets.symmetric(vertical: 32.v),
-        decoration: AppDecoration.fillBlue300.copyWith(
-          borderRadius: BorderRadiusStyle.customBorderTL25,
+        decoration: AppDecoration.fillBlue.copyWith(
+          borderRadius: BorderRadiusStyle.circleBorder15,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -97,16 +95,38 @@ class AfterOrderScreen extends StatelessWidget {
                     Divider(endIndent: 2.h),
                     SizedBox(height: 10.v),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(35, 0, 0, 0),
+                      padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                       child: Row(
                         children: [
-                          CustomElevatedButton(
-                            height: 30.v,
-                            width: 62.h,
-                            text: "Angie",
-                            buttonStyle:
-                                CustomButtonStyles.fillOnPrimaryContainer,
-                            buttonTextStyle: theme.textTheme.titleSmall!,
+                          Card(
+                            clipBehavior: Clip.antiAlias,
+                            elevation: 0,
+                            margin: EdgeInsets.only(left: 11.h),
+                            color: theme.colorScheme.onPrimaryContainer,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadiusStyle.circleBorder15,
+                            ),
+                            child: Container(
+                              height: 30.v,
+                              width: 50.h,
+                              padding: EdgeInsets.symmetric(vertical: 6.v),
+                              decoration:
+                                  AppDecoration.fillOnPrimaryContainer.copyWith(
+                                borderRadius: BorderRadiusStyle.circleBorder15,
+                              ),
+                              child: Stack(
+                                alignment: Alignment.topRight,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.center,
+                                      child: Text(
+                                        "Angie",
+                                        style: theme.textTheme.titleSmall,
+                                      ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                           Card(
                             clipBehavior: Clip.antiAlias,
@@ -163,7 +183,7 @@ class AfterOrderScreen extends StatelessWidget {
                               width: 230.h,
                               controller: messageController,
                               hintText: "Send a message to the driver...",
-                              hintStyle: CustomTextStyles.bodySmallBlack900,
+                              hintStyle: CustomTextStyles.bodySmallOnPrimary12,
                               textInputAction: TextInputAction.done,
                               suffix: Container(
                                 margin:
@@ -221,14 +241,14 @@ class AfterOrderScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildVector(BuildContext context) {
+  Widget lokasi2(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
       child: Container(
         width: double.maxFinite,
         margin: EdgeInsets.only(bottom: 627.v),
         padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.v),
-        decoration: AppDecoration.fillGray,
+        decoration: AppDecoration.outlineBlack900,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -246,15 +266,6 @@ class AfterOrderScreen extends StatelessWidget {
                     width: 20.adaptSize,
                     alignment: Alignment.centerLeft,
                   ),
-                  CustomIconButton(
-                    height: 20.adaptSize,
-                    width: 20.adaptSize,
-                    padding: EdgeInsets.all(5.h),
-                    alignment: Alignment.center,
-                    child: CustomImageView(
-                      imagePath: ImageConstant.imgGroup8,
-                    ),
-                  ),
                 ],
               ),
             ),
@@ -271,7 +282,7 @@ class AfterOrderScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildMdiLocation(BuildContext context) {
+  Widget lokasi1(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,
       child: Container(
@@ -308,14 +319,13 @@ class AfterOrderScreen extends StatelessWidget {
             imagePath: ImageConstant.imgArrowLeftBlue600,
             margin: EdgeInsets.only(left: 16.h, top: 26.v, bottom: 24.v),
             onTap: () {
-              arrowBack(context);
+              back(context);
             }),
         title: AppbarTitle(text: "Order", margin: EdgeInsets.only(left: 13.h)),
         styleType: Style.bgFill);
   }
 
-  /// Navigates back to the previous screen.
-  arrowBack(BuildContext context) {
+  back(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.orderScreen);
   }
 }

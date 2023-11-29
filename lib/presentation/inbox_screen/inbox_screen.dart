@@ -25,7 +25,6 @@ class InboxScreen extends StatelessWidget {
                 })));
   }
 
-  /// Section Widget
   PreferredSizeWidget appBar(BuildContext context) {
     return CustomAppBar(
         leadingWidth: 48.h,
@@ -33,14 +32,13 @@ class InboxScreen extends StatelessWidget {
             imagePath: ImageConstant.imgArrowLeftBlue600,
             margin: EdgeInsets.only(left: 16.h, top: 26.v, bottom: 24.v),
             onTap: () {
-              arrowBack(context);
+              back(context);
             }),
         title: AppbarTitle(text: "Inbox", margin: EdgeInsets.only(left: 13.h)),
         styleType: Style.bgFill);
   }
 
-  /// Navigates back to the previous screen.
-  arrowBack(BuildContext context) {
+  back(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.mainScreenPage);
   }
 }

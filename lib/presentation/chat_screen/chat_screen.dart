@@ -7,11 +7,10 @@ import 'package:vincent_s_application6/widgets/app_bar/appbar_title_image.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
 import 'package:vincent_s_application6/widgets/custom_text_form_field.dart';
 
-// ignore_for_file: must_be_immutable
 class ChatScreen extends StatelessWidget {
   ChatScreen({Key? key}) : super(key: key);
 
-  TextEditingController messageController = TextEditingController();
+  final TextEditingController messageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +18,7 @@ class ChatScreen extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
             resizeToAvoidBottomInset: false,
-            appBar: _buildAppBar(context),
+            appBar: appBar(context),
             body: Container(
                 width: double.maxFinite,
                 padding: EdgeInsets.symmetric(vertical: 36.v),
@@ -45,7 +44,7 @@ class ChatScreen extends StatelessWidget {
                                     width: 137.h,
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 16.h, vertical: 6.v),
-                                    decoration: AppDecoration.fillBluegray100
+                                    decoration: AppDecoration.fillBlueGray
                                         .copyWith(
                                             borderRadius: BorderRadiusStyle
                                                 .circleBorder15),
@@ -56,25 +55,24 @@ class ChatScreen extends StatelessWidget {
                                               alignment: Alignment.center,
                                               child: Text("Tunggu saya tiba",
                                                   style: CustomTextStyles
-                                                      .titleSmallExtraBold)),
+                                                      .titleSmallSemiBold)),
                                         ])))
                           ])),
                       SizedBox(height: 22.v),
                       
                       SizedBox(height: 5.v)
                     ])),
-            bottomNavigationBar: _buildMessage(context)));
+            bottomNavigationBar: message(context)));
   }
 
-  /// Section Widget
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
+  PreferredSizeWidget appBar(BuildContext context) {
     return CustomAppBar(
         leadingWidth: 50.h,
         leading: AppbarLeadingImage(
             imagePath: ImageConstant.imgArrowLeft,
             margin: EdgeInsets.only(left: 15.h, top: 24.v, bottom: 26.v),
             onTap: () {
-              onTapArrowLeft(context);
+              backLeft(context);
             }),
         title: Padding(
             padding: EdgeInsets.only(left: 5.h),
@@ -91,15 +89,14 @@ class ChatScreen extends StatelessWidget {
                     AppbarSubtitleTwo(
                       text: "+6281356783023",
                       margin: EdgeInsets.only(top: 26.v),
-                      hintStyle: CustomTextStyles.titleSmallExtraBold,
+                      hintStyle: CustomTextStyles.titleSmallBluegray400,
                     )
                   ]))
             ])),
         styleType: Style.bgFill);
   }
 
-  /// Section Widget
-  Widget _buildMessage(BuildContext context) {
+  Widget message(BuildContext context) {
     return Container(
         height: 70,
         decoration: AppDecoration.fillBlue,
@@ -118,7 +115,7 @@ class ChatScreen extends StatelessWidget {
                     width: 214.h,
                     controller: messageController,
                     hintText: "Type a message...",
-                    hintStyle: CustomTextStyles.titleSmallExtraBold,
+                    hintStyle: CustomTextStyles.titleSmallSemiBold,
                     textInputAction: TextInputAction.done,
                     prefix: Container(
                         margin: EdgeInsets.fromLTRB(11.h, 5.v, 5.h, 5.v),
@@ -148,8 +145,7 @@ class ChatScreen extends StatelessWidget {
             ]));
   }
 
-  /// Navigates back to the previous screen.
-  onTapArrowLeft(BuildContext context) {
+  backLeft(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.mainScreenPage);
   }
 }

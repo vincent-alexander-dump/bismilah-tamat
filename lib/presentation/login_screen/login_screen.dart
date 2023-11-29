@@ -59,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                                           SizedBox(height: 10.v),
                                           Text("Please login to continue",
                                               style: CustomTextStyles
-                                                  .bodySmallLightblue900)
+                                                  .bodySmallOnPrimary12)
                                         ]),
                                     CustomImageView(
                                         imagePath: ImageConstant.imgScooter,
@@ -116,7 +116,7 @@ class LoginScreen extends StatelessWidget {
                                             .bodySmallOnPrimary12),
                                     TextSpan(
                                         text: "Register",
-                                        style: CustomTextStyles.bodySmall12_1)
+                                        style: CustomTextStyles.bodySmallOnPrimary12)
                                   ]),
                                   textAlign: TextAlign.left))),
                       SizedBox(height: 38.v),
@@ -133,7 +133,7 @@ class LoginScreen extends StatelessWidget {
                       Align(
                           alignment: Alignment.center,
                           child: Text("Or, login with",
-                              style: CustomTextStyles.bodySmallLightblue900)),
+                              style: CustomTextStyles.bodySmallOnPrimary12)),
                       SizedBox(height: 12.v),
                       Align(
                           alignment: Alignment.center,

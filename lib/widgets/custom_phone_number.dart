@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 import 'package:vincent_s_application6/widgets/custom_text_form_field.dart';
 
-// ignore: must_be_immutable
 class CustomPhoneNumber extends StatelessWidget {
   CustomPhoneNumber({
     Key? key,
@@ -52,7 +51,7 @@ class CustomPhoneNumber extends StatelessWidget {
                   padding: EdgeInsets.fromLTRB(2.h, 5.v, 5.h, 4.v),
                   child: Text(
                     "+${country.phoneCode}",
-                    style: CustomTextStyles.bodySmallBlack90012,
+                    style: CustomTextStyles.bodySmallBlack90011,
                   ),
                 ),
               ],

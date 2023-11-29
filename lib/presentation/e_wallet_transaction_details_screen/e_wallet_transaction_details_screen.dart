@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 import 'package:vincent_s_application6/widgets/custom_elevated_button.dart';
-// ignore_for_file: must_be_immutable
 class EWalletTransactionDetailsScreen extends StatelessWidget {
   EWalletTransactionDetailsScreen({Key? key}) : super(key: key);
 
@@ -27,7 +26,7 @@ class EWalletTransactionDetailsScreen extends StatelessWidget {
                       child: Padding(
                           padding: EdgeInsets.only(right: 139.h),
                           child: Text("Amount",
-                              style: CustomTextStyles.bodyMedium15))),
+                              style: CustomTextStyles.bodyMedium14))),
                   SizedBox(height: 7.v),
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     Padding(
@@ -40,15 +39,14 @@ class EWalletTransactionDetailsScreen extends StatelessWidget {
                   historyContainer(context),
                   SizedBox(height: 5.v)
                 ])),
-            bottomNavigationBar: back(context)));
+            bottomNavigationBar: backButton(context)));
   }
 
-  /// Section Widget
   Widget historyContainer(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(left: 7.h, right: 10.h),
         padding: EdgeInsets.symmetric(vertical: 6.v),
-        decoration: AppDecoration.fillPink100012,
+        decoration: AppDecoration.fillPink10001,
         child: Column(children: [
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.h),
@@ -223,18 +221,16 @@ class EWalletTransactionDetailsScreen extends StatelessWidget {
         ]));
   }
 
-  /// Section Widget
-  Widget back(BuildContext context) {
+  Widget backButton(BuildContext context) {
     return CustomElevatedButton(
         text: "BACK",
         margin: EdgeInsets.only(left: 21.h, right: 23.h, bottom: 19.v),
         onPressed: () {
-          arrowBack(context);
+          back(context);
         });
   }
 
-  /// Navigates to the eWalletTransactionHistoryScreen when the action is triggered.
-  arrowBack(BuildContext context) {
+  back(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletTransactionHistoryScreen);
   }
 }

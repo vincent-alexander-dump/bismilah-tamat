@@ -1,37 +1,31 @@
-// ignore_for_file: unused_import
-
-import 'package:vincent_s_application6/widgets/app_bar/appbar_leading_image.dart';
+import 'package:vincent_s_application6/presentation/main_screen_page/widgets/subcribepjekplus_item_widget.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_subtitle_one.dart';
 
 import '../main_screen_page/widgets/flowride_item_widget.dart';
-import '../main_screen_page/widgets/subcribepjekplus_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
-import 'package:vincent_s_application6/widgets/app_bar/appbar_title_searchview.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
-import 'package:flutter/cupertino.dart';
 
-// ignore_for_file: must_be_immutable
 class MainScreenPage extends StatelessWidget {
   MainScreenPage({Key? key}) : super(key: key);
 
-  TextEditingController searchController = TextEditingController();
+  final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     return SafeArea(
         child: Scaffold(
-            appBar: _buildAppBar(context),
+            appBar: appBar(context),
             body: Container(
                 width: double.maxFinite,
                 padding: EdgeInsets.symmetric(horizontal: 11.h, vertical: 22.v),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      _buildSaldo(context),
+                      saldo(context),
                       SizedBox(height: 21.v),
-                      _buildFlowRide(context),
+                      buttonFlowRide(context),
                       SizedBox(height: 16.v),
                       Align(
                           alignment: Alignment.centerLeft,
@@ -40,24 +34,21 @@ class MainScreenPage extends StatelessWidget {
                               child: Text("Recommended For You",
                                   style: CustomTextStyles.titleLargeLight))),
                       SizedBox(height: 15.v),
-                      _buildSubcribePJekPlus(context),
+                      buildIklan(context),
                       SizedBox(height: 20.v),
-                      _buildBottomButtons(context), 
+                      navigationButton(context), 
                     ]))));
   }
   
-  /// Section Widget
    onTapArrowLeft(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.settingScreen);
   }
 
-  PreferredSizeWidget _buildAppBar(BuildContext context) {
+  PreferredSizeWidget appBar(BuildContext context) {
     return CustomAppBar(
         leadingWidth: 47.h,
         leading: CustomImageView(
               imagePath: ImageConstant.imgTestAccount,
-              // height: 30.v,
-              // width: 3.h,
               margin: EdgeInsets.only(left: 5.h),
               onTap: () {
               onTapArrowLeft(context);
@@ -68,17 +59,16 @@ class MainScreenPage extends StatelessWidget {
         styleType: Style.bgFill);
   }
 
-  /// Section Widget
-  Widget _buildSaldo(BuildContext context) {
+  Widget saldo(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          onTapSaldo(context);
+          toEWallet(context);
         },
         child: Container(
             margin: EdgeInsets.only(left: 3.h, right: 2.h),
             padding: EdgeInsets.symmetric(horizontal: 18.h, vertical: 16.v),
             decoration: AppDecoration.fillPink10001
-                .copyWith(borderRadius: BorderRadiusStyle.roundedBorder25),
+                .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,7 +78,7 @@ class MainScreenPage extends StatelessWidget {
                       padding:
                           EdgeInsets.symmetric(horizontal: 11.h, vertical: 7.v),
                       decoration: AppDecoration.fillOnPrimaryContainer.copyWith(
-                          borderRadius: BorderRadiusStyle.roundedBorder10),
+                          borderRadius: BorderRadiusStyle.circleBorder15),
                       child: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -98,7 +88,7 @@ class MainScreenPage extends StatelessWidget {
                             Text("Rp100.000",
                                 style: CustomTextStyles.titleLargeOnPrimary),
                             Text("points 25.000",
-                                style: CustomTextStyles.bodyLargeOnPrimaryLight)
+                                style: CustomTextStyles.bodyLargeOnPrimary)
                           ])),
                   Container(
                       height: 67.v,
@@ -169,8 +159,7 @@ class MainScreenPage extends StatelessWidget {
                 ])));
   }
 
-  /// Section Widget
-  Widget _buildFlowRide(BuildContext context) {
+  Widget buttonFlowRide(BuildContext context) {
     return SizedBox(
         height: 75.v,
         child: ListView.separated(
@@ -181,14 +170,13 @@ class MainScreenPage extends StatelessWidget {
             },
             itemCount: 2,
             itemBuilder: (context, index) {
-              return FlowrideItemWidget(onTapPJek: () {
-                onTapPJek(context);
+              return FlowrideItemWidget(buttonOrder: () {
+                toOrder(context);
               });
             }));
   }
 
-  /// Section Widget
-  Widget _buildSubcribePJekPlus(BuildContext context) {
+  Widget buildIklan(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 3.h),
         child: ListView.separated(
@@ -199,19 +187,17 @@ class MainScreenPage extends StatelessWidget {
             },
             itemCount: 3,
             itemBuilder: (context, index) {
-              return SubcribepjekplusItemWidget();
+              return iklan();
             }));
   }
 
-  /// Navigates to the orderScreen when the action is triggered.
-  onTapPJek(BuildContext context) {
+  toOrder(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.orderScreen);
   }
-  /// Navigates to the eWalletMainScreen when the action is triggered.
-  onTapSaldo(BuildContext context) {
+  toEWallet(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletMainScreen);
   }
-  Widget _buildBottomButtons(BuildContext context) {
+  Widget navigationButton(BuildContext context) {
   return  Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -243,7 +229,7 @@ class MainScreenPage extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, AppRoutes.promosTabContainerScreen);
+                      Navigator.pushNamed(context, AppRoutes.promosScreen);
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Color(0xFFCD5C5C)),
@@ -257,11 +243,10 @@ class MainScreenPage extends StatelessWidget {
                       RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(0.0),
                       ),
-                      
             ),
-            minimumSize: MaterialStateProperty.all(
-    Size(double.infinity, 70.0), // Adjust the height (50.0) as needed
-  ),
+                      minimumSize: MaterialStateProperty.all(
+                        Size(double.infinity, 70.0),
+                      ),
                     ),
                     child: Text("Promo"),
                   ),
@@ -311,7 +296,7 @@ class MainScreenPage extends StatelessWidget {
                         ),
                       ),
                       minimumSize: MaterialStateProperty.all(
-                      Size(double.infinity, 70.0), // Adjust the height (50.0) as needed
+                      Size(double.infinity, 70.0),
                       ),
                     ),
                     child: Text("Chat"),

@@ -1,20 +1,12 @@
-// ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_leading_image.dart';
-import 'package:vincent_s_application6/widgets/app_bar/appbar_subtitle_one.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_title.dart';
-import 'package:vincent_s_application6/widgets/app_bar/appbar_title_button.dart';
-import 'package:vincent_s_application6/widgets/app_bar/appbar_title_button_four.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
-import 'package:vincent_s_application6/widgets/custom_checkbox_button.dart';
 
-// ignore_for_file: must_be_immutable
 class EWalletMainScreen extends StatelessWidget {
   EWalletMainScreen({Key? key}) : super(key: key);
-
-  bool balance = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +27,15 @@ class EWalletMainScreen extends StatelessWidget {
                       Padding(
                           padding: EdgeInsets.only(left: 18.h),
                           child: Text("Naswa Azahra!",
-                              style: CustomTextStyles.titleSmallExtraBold)),
+                              style: CustomTextStyles.titleMediumSemiBold)),
                       SizedBox(height: 28.v),
-                      _buildFortyFive(context),
+                      money(context),
                       SizedBox(height: 41.v),
-                      _buildFive(context),
+                      button(context),
                       SizedBox(height: 5.v)
                     ]))));
   }
 
-  /// Section Widget
     PreferredSizeWidget appBar(BuildContext context) {
     return CustomAppBar(
         leadingWidth: 48.h,
@@ -52,25 +43,23 @@ class EWalletMainScreen extends StatelessWidget {
             imagePath: ImageConstant.imgArrowLeftBlue600,
             margin: EdgeInsets.only(left: 16.h, top: 26.v, bottom: 24.v),
             onTap: () {
-              arrowBack(context);
+              back(context);
             }),
         title: AppbarTitle(text: "E-Wallet", margin: EdgeInsets.only(left: 13.h)),
         styleType: Style.bgFill);
   }
 
-  /// Navigates back to the previous screen.
-  arrowBack(BuildContext context) {
+  back(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.mainScreenPage);
   }
 
-  /// Section Widget
-  Widget _buildFortyFive(BuildContext context) {
+  Widget money(BuildContext context) {
     return Align(
         alignment: Alignment.center,
         child: Container(
             width: 339.h,
             padding: EdgeInsets.symmetric(vertical: 5.v),
-            decoration: AppDecoration.fillPink100011
+            decoration: AppDecoration.fillPink10001
                 .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
             child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -105,18 +94,17 @@ class EWalletMainScreen extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(top: 2.v),
                         child: Text("Rp 25.000",
-                            style: CustomTextStyles.bodyMedium15))
+                            style: CustomTextStyles.bodyMedium14))
                   ]),
                   SizedBox(height: 3.v)
                 ])));
   }
 
-  /// Section Widget
-  Widget _buildFive(BuildContext context) {
+  Widget button(BuildContext context) {
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 63.h, vertical: 18.v),
         decoration: AppDecoration.fillPink
-            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder20),
+            .copyWith(borderRadius: BorderRadiusStyle.circleBorder15),
         child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -139,15 +127,15 @@ class EWalletMainScreen extends StatelessWidget {
                                       width: 54.h,
                                       decoration: BoxDecoration(
                                           color: appTheme.pink50))),
-                              _buildSixtyEight(context,
+                              image(context,
                                   plusMath: ImageConstant.imgHourglass,
                                   topUp: "History", onTapSixtyEight: () {
-                                onTapSixtySeven(context);
+                                toHistory(context);
                               })
                             ])),
                         GestureDetector(
                             onTap: () {
-                              onTapView(context);
+                              toPoints(context);
                             },
                             child: SizedBox(
                                 height: 81.v,
@@ -206,15 +194,15 @@ class EWalletMainScreen extends StatelessWidget {
                                       width: 54.h,
                                       decoration: BoxDecoration(
                                           color: appTheme.pink50))),
-                              _buildSixtyEight(context,
+                              image(context,
                                   plusMath: ImageConstant.imgPlusMath,
                                   topUp: "Top Up", onTapSixtyEight: () {
-                                onTapView1(context);
+                                toTopup(context);
                               })
                             ])),
                         GestureDetector(
                             onTap: () {
-                              onTapView2(context);
+                              toContact(context);
                             },
                             child: SizedBox(
                                 height: 81.v,
@@ -258,8 +246,7 @@ class EWalletMainScreen extends StatelessWidget {
             ]));
   }
 
-  /// Common widget
-  Widget _buildSixtyEight(
+  Widget image(
     BuildContext context, {
     required String plusMath,
     required String topUp,
@@ -279,23 +266,19 @@ class EWalletMainScreen extends StatelessWidget {
         ]));
   }
 
-  /// Navigates to the eWalletTransactionHistoryScreen when the action is triggered.
-  onTapSixtySeven(BuildContext context) {
+  toHistory(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletTransactionHistoryScreen);
   }
 
-  /// Navigates to the eWalletPointsScreen when the action is triggered.
-  onTapView(BuildContext context) {
+  toPoints(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletPointsScreen);
   }
 
-  /// Navigates to the eWalletTopupScreen when the action is triggered.
-  onTapView1(BuildContext context) {
+  toTopup(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletTopupScreen);
   }
 
-  /// Navigates to the eWalletContactTransferScreen when the action is triggered.
-  onTapView2(BuildContext context) {
+  toContact(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletContactTransferScreen);
   }
 }

@@ -1,20 +1,15 @@
-// ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
-import 'package:vincent_s_application6/widgets/app_bar/appbar_image.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_leading_image.dart';
-import 'package:vincent_s_application6/widgets/app_bar/appbar_subtitle_one.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_title.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
 import 'package:vincent_s_application6/widgets/custom_elevated_button.dart';
-import 'package:vincent_s_application6/widgets/custom_icon_button.dart';
-import 'package:vincent_s_application6/widgets/custom_radio_button.dart';
 
 class OrderScreen extends StatelessWidget {
   OrderScreen({Key? key}) : super(key: key);
 
-  String radioGroup = "";
+  final String radioGroup = "";
 
   @override
   Widget build(BuildContext context) {
@@ -28,21 +23,21 @@ class OrderScreen extends StatelessWidget {
               height: 185.v,
               width: 360.h,
             ),
-            _buildJalanTanjungDuren(context),
-            _buildLineFortySix(context),
+            lokasi2(context),
+            lokasi(context),
             SizedBox(height: 13.v),
-            _buildSelectViaMap(context),
+            tombolMap(context),
             SizedBox(height: 82.v),
-            _buildThumbsUp(context),
+            notifikasi(context),
             SizedBox(height: 5.v),
           ],
         ),
-        bottomNavigationBar: _buildORDER(context),
+        bottomNavigationBar: orderButton(context),
       ),
     );
   }
 
-  Widget _buildJalanTanjungDuren(BuildContext context) {
+  Widget lokasi2(BuildContext context) {
     return SizedBox(
       width: double.maxFinite,
       child: Stack(
@@ -121,7 +116,7 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildLineFortySix(BuildContext context) {
+  Widget lokasi(BuildContext context) {
     return SizedBox(
       height: 150.v,
       width: double.maxFinite,
@@ -132,7 +127,7 @@ class OrderScreen extends StatelessWidget {
             alignment: Alignment.center,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 20.v),
-              decoration: AppDecoration.fillBlueGray,
+              decoration: AppDecoration.fillBlue,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,7 +155,7 @@ class OrderScreen extends StatelessWidget {
                                 SizedBox(height: 6.v),
                                 Text(
                                   "Jalan Palmerah Barat No. 16, Palmerah, Jakarta",
-                                  style: CustomTextStyles.bodySmallBlack90012_1,
+                                  style: CustomTextStyles.bodySmallBlack90012,
                                 ),
                               ],
                             ),
@@ -195,7 +190,7 @@ class OrderScreen extends StatelessWidget {
                                 SizedBox(height: 6.v),
                                 Text(
                                   "Jalan Palmerah Barat No. 16, Palmerah, Jakarta",
-                                  style: CustomTextStyles.bodySmallBlack90012_1,
+                                  style: CustomTextStyles.bodySmallBlack90012,
                                 ),
                               ],
                             ),
@@ -213,7 +208,7 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSelectViaMap(BuildContext context) {
+  Widget tombolMap(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 17.h),
       child: Row(
@@ -258,7 +253,7 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildThumbsUp(BuildContext context) {
+  Widget notifikasi(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
@@ -269,8 +264,8 @@ class OrderScreen extends StatelessWidget {
               height: 60.v,
               width: 64.h,
               padding: EdgeInsets.symmetric(horizontal: 7.h, vertical: 5.v),
-              decoration: AppDecoration.fillOnError.copyWith(
-                borderRadius: BorderRadiusStyle.roundedBorder10,
+              decoration: AppDecoration.fillBlueGray.copyWith(
+                borderRadius: BorderRadiusStyle.circleBorder15,
               ),
               child: CustomImageView(
                 imagePath: ImageConstant.imgThumbsUp,
@@ -286,7 +281,7 @@ class OrderScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Well, just go wear PJek!",
+                      "Well, just go wear Flow Ride!",
                       style: CustomTextStyles.titleSmallMedium,
                     ),
                     SizedBox(height: 3.v),
@@ -296,7 +291,7 @@ class OrderScreen extends StatelessWidget {
                         "Just sit and enjoy \nthe view until you reach your destination.",
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: CustomTextStyles.bodySmallBlack90012,
+                        style: CustomTextStyles.bodySmallBlack90011,
                       ),
                     ),
                   ],
@@ -309,12 +304,12 @@ class OrderScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildORDER(BuildContext context) {
+  Widget orderButton(BuildContext context) {
     return CustomElevatedButton(
       text: "ORDER",
       margin: EdgeInsets.only(left: 21.h, right: 23.h, bottom: 19.v),
       onPressed: () {
-        onTapORDER(context);
+        toAfterOrder(context);
       },
     );
   }
@@ -326,18 +321,17 @@ class OrderScreen extends StatelessWidget {
             imagePath: ImageConstant.imgArrowLeftBlue600,
             margin: EdgeInsets.only(left: 16.h, top: 26.v, bottom: 24.v),
             onTap: () {
-              arrowBack(context);
+              back(context);
             }),
         title: AppbarTitle(text: "Where are you going today?", margin: EdgeInsets.only(left: 13.h)),
         styleType: Style.bgFill);
   }
 
-  /// Navigates back to the previous screen.
-  arrowBack(BuildContext context) {
+  back(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.mainScreenPage);
   }
 
-  void onTapORDER(BuildContext context) {
+  void toAfterOrder(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.afterOrderScreen);
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 
 // ignore: must_be_immutable
-class SubcribepjekplusItemWidget extends StatelessWidget {
-  const SubcribepjekplusItemWidget({Key? key})
+class iklan extends StatelessWidget {
+  const iklan({Key? key})
       : super(
           key: key,
         );
@@ -15,8 +15,8 @@ class SubcribepjekplusItemWidget extends StatelessWidget {
         horizontal: 21.h,
         vertical: 27.v,
       ),
-      decoration: AppDecoration.fillBlue300.copyWith(
-        borderRadius: BorderRadiusStyle.roundedBorder20,
+      decoration: AppDecoration.fillBlue.copyWith(
+        borderRadius: BorderRadiusStyle.circleBorder15,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,8 +42,8 @@ class SubcribepjekplusItemWidget extends StatelessWidget {
                       style: CustomTextStyles.bodyMediumOnPrimaryContainerLight,
                     ),
                     TextSpan(
-                      text: "PJek",
-                      style: CustomTextStyles.titleSmallOnPrimaryContainer_1
+                      text: "RideFlow",
+                      style: CustomTextStyles.bodyMediumOnPrimaryContainerLight
                           .copyWith(
                         decoration: TextDecoration.underline,
                       ),

@@ -16,8 +16,8 @@ Widget build(BuildContext context) {
       body: Column(
         children: [
           Container(
-            width: double.infinity, // Set the desired width
-            height: 100.0, // Set the desired height
+            width: double.infinity,
+            height: 100.0,
             child: ElevatedButton(
               onPressed: () {
               Navigator.pushNamed(context, AppRoutes.eWalletCreditCardScreen);
@@ -38,8 +38,8 @@ Widget build(BuildContext context) {
             ),
           ),
           Container(
-            width: double.infinity, // Set the desired width
-            height: 100.0, // Set the desired height
+            width: double.infinity,
+            height: 100.0,
             child: ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, AppRoutes.eWalletBankTransferScreen);
@@ -64,7 +64,6 @@ Widget build(BuildContext context) {
     ),
   );
 }
-  /// Section Widget
   PreferredSizeWidget appBar(BuildContext context) {
     return CustomAppBar(
         leadingWidth: 48.h,
@@ -72,14 +71,13 @@ Widget build(BuildContext context) {
             imagePath: ImageConstant.imgArrowLeftBlue600,
             margin: EdgeInsets.only(left: 16.h, top: 26.v, bottom: 24.v),
             onTap: () {
-              arrowBack(context);
+              back(context);
             }),
         title: AppbarTitle(text: "Top Up", margin: EdgeInsets.only(left: 13.h)),
         styleType: Style.bgFill);
   }
 
-  /// Navigates back to the previous screen.
-  arrowBack(BuildContext context) {
+  back(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletMainScreen);
   }
 }

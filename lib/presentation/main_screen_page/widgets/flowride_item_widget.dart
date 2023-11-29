@@ -5,12 +5,12 @@ import 'package:vincent_s_application6/core/app_export.dart';
 class FlowrideItemWidget extends StatelessWidget {
   FlowrideItemWidget({
     Key? key,
-    this.onTapPJek,
+    this.buttonOrder
   }) : super(
           key: key,
         );
 
-  VoidCallback? onTapPJek;
+  VoidCallback? buttonOrder;
 
   @override
   Widget build(BuildContext context) {
@@ -18,14 +18,14 @@ class FlowrideItemWidget extends StatelessWidget {
       width: 75.h,
       child: GestureDetector(
         onTap: () {
-          onTapPJek!.call();
+          buttonOrder!.call();
         },
         child: Container(
           padding: EdgeInsets.symmetric(
             horizontal: 11.h,
             vertical: 3.v,
           ),
-          decoration: AppDecoration.fillBlue300.copyWith(
+          decoration: AppDecoration.fillBlue.copyWith(
             borderRadius: BorderRadiusStyle.circleBorder15,
           ),
           child: Column(

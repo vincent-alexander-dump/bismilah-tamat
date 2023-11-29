@@ -26,7 +26,7 @@ class EWalletPointsScreen extends StatelessWidget {
                       child: Padding(
                           padding: EdgeInsets.only(right: 140.h),
                           child: Text("Flow Points",
-                              style: CustomTextStyles.bodyMedium15))),
+                              style: CustomTextStyles.bodyMedium14))),
                   SizedBox(height: 10.v),
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     Padding(
@@ -88,7 +88,7 @@ class EWalletPointsScreen extends StatelessWidget {
                                       "Flow Point dapat digunakan untuk membayar atau mendiskon FlowRide dan FlowCar.",
                                       maxLines: 3,
                                       overflow: TextOverflow.ellipsis,
-                                      style: CustomTextStyles.titleMediumRedA200)))
+                                      style: CustomTextStyles.titleSmallMedium)))
                         ])),
                   SizedBox(height: 9.v),
                   Divider(color: appTheme.pink10001.withOpacity(0.43)),
@@ -106,7 +106,7 @@ class EWalletPointsScreen extends StatelessWidget {
                                 padding: EdgeInsets.only(
                                     left: 15.h, top: 23.v, bottom: 17.v),
                                 child: Text("1 Flow Point setara Rp.1",
-                                    style: CustomTextStyles.titleMediumRedA200))
+                                    style: CustomTextStyles.titleSmallMedium))
                           ]))),
                   SizedBox(height: 15.v),
                   Divider(color: appTheme.pink10001.withOpacity(0.43)),
@@ -133,7 +133,7 @@ class EWalletPointsScreen extends StatelessWidget {
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
                                             style: CustomTextStyles
-                                                .titleMediumRedA200)))
+                                                .titleSmallMedium)))
                               ]))),
                   SizedBox(height: 12.v),
                   Divider(color: appTheme.pink10001.withOpacity(0.43)),
@@ -158,25 +158,23 @@ class EWalletPointsScreen extends StatelessWidget {
                                             overflow: TextOverflow.ellipsis,
                                             textAlign: TextAlign.left,
                                             style: CustomTextStyles
-                                                .titleMediumRedA200)))
+                                                .titleSmallMedium)))
                           ]))),
                   SizedBox(height: 5.v)
                 ])),
-            bottomNavigationBar: _buildBACK(context)));
+            bottomNavigationBar: buttonBack(context)));
   }
 
-  /// Section Widget
-  Widget _buildBACK(BuildContext context) {
+  Widget buttonBack(BuildContext context) {
     return CustomElevatedButton(
         text: "BACK",
         margin: EdgeInsets.only(left: 21.h, right: 23.h, bottom: 20.v),
         onPressed: () {
-          onTapBACK(context);
+          back(context);
         });
   }
 
-  /// Navigates to the eWalletMainScreen when the action is triggered.
-  onTapBACK(BuildContext context) {
+  back(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletMainScreen);
   }
 }

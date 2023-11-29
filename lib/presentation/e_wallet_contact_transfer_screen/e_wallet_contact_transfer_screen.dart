@@ -6,15 +6,14 @@ import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
 import 'package:vincent_s_application6/widgets/custom_elevated_button.dart';
 import 'package:vincent_s_application6/widgets/custom_text_form_field.dart';
 
-// ignore_for_file: must_be_immutable
 class EWalletContactTransferScreen extends StatelessWidget {
   EWalletContactTransferScreen({Key? key}) : super(key: key);
 
-  TextEditingController nomorController = TextEditingController();
+  final TextEditingController nomorController = TextEditingController();
 
-  TextEditingController jumlahNominalController = TextEditingController();
+  final TextEditingController jumlahNominalController = TextEditingController();
 
-  TextEditingController notesController = TextEditingController();
+  final TextEditingController notesController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +54,6 @@ class EWalletContactTransferScreen extends StatelessWidget {
             bottomNavigationBar: confirmButton(context)));
   }
 
-  /// Section Widget
   PreferredSizeWidget appBar(BuildContext context) {
     return CustomAppBar(
         leadingWidth: 48.h,
@@ -73,7 +71,6 @@ class EWalletContactTransferScreen extends StatelessWidget {
     Navigator.pushNamed(context, AppRoutes.eWalletMainScreen);
   }
 
-  /// Section Widget
   Widget nomor(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(left: 1.h, right: 17.h),
@@ -90,7 +87,6 @@ class EWalletContactTransferScreen extends StatelessWidget {
         );
   }
 
-  /// Section Widget
   Widget jumlahNominal(BuildContext context) {
      return Padding(
         padding: EdgeInsets.only(left: 1.h, right: 17.h),
@@ -107,7 +103,6 @@ class EWalletContactTransferScreen extends StatelessWidget {
         );
   }
 
-  /// Section Widget
   Widget notes(BuildContext context) {
      return Padding(
         padding: EdgeInsets.only(left: 1.h, right: 17.h),
@@ -125,7 +120,6 @@ class EWalletContactTransferScreen extends StatelessWidget {
         );
   }
 
-  /// Section Widget
   Widget confirmButton(BuildContext context) {
     return CustomElevatedButton(
         text: "CONFIRM",
@@ -136,7 +130,6 @@ class EWalletContactTransferScreen extends StatelessWidget {
   }
 
 
-  /// Navigates to the eWalletSuccessPaymentScreen when the action is triggered.
   toSuccess(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.eWalletSuccessPaymentScreen);
   }

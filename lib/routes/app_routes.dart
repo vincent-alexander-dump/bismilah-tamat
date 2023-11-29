@@ -12,15 +12,14 @@ import 'package:vincent_s_application6/presentation/e_wallet_transaction_history
 import 'package:vincent_s_application6/presentation/e_wallet_transaction_details_screen/e_wallet_transaction_details_screen.dart';
 import 'package:vincent_s_application6/presentation/chat_screen/chat_screen.dart';
 import 'package:vincent_s_application6/presentation/register_screen/register_screen.dart';
-import 'package:vincent_s_application6/presentation/promos_tab_container_screen/promos_tab_container_screen.dart';
+import 'package:vincent_s_application6/presentation/promos_screen/promos_screen.dart';
 import 'package:vincent_s_application6/presentation/inbox_screen/inbox_screen.dart';
-import 'package:vincent_s_application6/presentation/subscribe_tab_container_screen/subscribe_tab_container_screen.dart';
+import 'package:vincent_s_application6/presentation/subscribe_screen/subscribe_screen.dart';
 import 'package:vincent_s_application6/presentation/e_wallet_topup_screen/e_wallet_topup_screen.dart';
 import 'package:vincent_s_application6/presentation/e_wallet_contact_transfer_screen/e_wallet_contact_transfer_screen.dart';
 import 'package:vincent_s_application6/presentation/e_wallet_bank_transfer_screen/e_wallet_bank_transfer_screen.dart';
 import 'package:vincent_s_application6/presentation/e_wallet_success_payment_screen/e_wallet_success_payment_screen.dart';
 import 'package:vincent_s_application6/presentation/e_wallet_credit_card_screen/e_wallet_credit_card_screen.dart';
-import 'package:vincent_s_application6/presentation/app_navigation_screen/app_navigation_screen.dart';
 
 class AppRoutes {
   static const String orderScreen = '/order_screen';
@@ -39,9 +38,6 @@ class AppRoutes {
 
   static const String mainScreenPage = '/main_screen_page';
 
-  static const String mainScreenContainerScreen =
-      '/main_screen_container_screen';
-
   static const String eWalletMainScreen = '/e_wallet_main_screen';
 
   static const String eWalletTransactionHistoryScreen =
@@ -54,16 +50,12 @@ class AppRoutes {
 
   static const String registerScreen = '/register_screen';
 
-  static const String promosPage = '/promos_page';
-
-  static const String promosTabContainerScreen = '/promos_tab_container_screen';
+  static const String promosScreen = '/promos_tab_container_screen';
 
   static const String inboxScreen = '/inbox_screen';
 
-  static const String subscribePage = '/subscribe_page';
-
-  static const String subscribeTabContainerScreen =
-      '/subscribe_tab_container_screen';
+  static const String subscribeScreen =
+      '/subscribe_screen';
 
   static const String eWalletTopupScreen = '/e_wallet_topup_screen';
 
@@ -96,14 +88,13 @@ class AppRoutes {
         EWalletTransactionDetailsScreen(),
     chatScreen: (context) => ChatScreen(),
     registerScreen: (context) => RegisterScreen(),
-    promosTabContainerScreen: (context) => PromosTabContainerScreen(),
+    promosScreen: (context) => PromosScreen(),
     inboxScreen: (context) => InboxScreen(),
-    subscribeTabContainerScreen: (context) => SubscribeTabContainerScreen(),
+    subscribeScreen: (context) => SubscribeScreen(),
     eWalletTopupScreen: (context) => EWalletTopupScreen(),
     eWalletContactTransferScreen: (context) => EWalletContactTransferScreen(),
     eWalletBankTransferScreen: (context) => EWalletBankTransferScreen(),
     eWalletSuccessPaymentScreen: (context) => EWalletSuccessPaymentScreen(),
     eWalletCreditCardScreen: (context) => EWalletCreditCardScreen(),
-    appNavigationScreen: (context) => AppNavigationScreen()
   };
 }

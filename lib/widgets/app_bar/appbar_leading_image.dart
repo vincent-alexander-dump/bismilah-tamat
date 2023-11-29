@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 
-// ignore: must_be_immutable
 class AppbarLeadingImage extends StatelessWidget {
   AppbarLeadingImage({
     Key? key,
@@ -12,11 +11,11 @@ class AppbarLeadingImage extends StatelessWidget {
           key: key,
         );
 
-  String? imagePath;
+  final String? imagePath;
 
-  EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? margin;
 
-  Function? onTap;
+  final Function? onTap;
 
   @override
   Widget build(BuildContext context) {

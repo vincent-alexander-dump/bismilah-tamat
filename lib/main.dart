@@ -9,7 +9,6 @@ void main() {
     DeviceOrientation.portraitUp,
   ]);
 
-  ///Please update theme as per your need if required.
   runApp(MyApp());
 }
 

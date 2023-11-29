@@ -1,4 +1,3 @@
-// ignore_for_file: unused_import
 
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';
@@ -6,23 +5,21 @@ import 'package:flutter/material.dart';
 import 'package:vincent_s_application6/core/app_export.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_leading_image.dart';
 import 'package:vincent_s_application6/widgets/app_bar/appbar_title.dart';
-import 'package:vincent_s_application6/widgets/app_bar/appbar_title_button.dart';
 import 'package:vincent_s_application6/widgets/app_bar/custom_app_bar.dart';
 import 'package:vincent_s_application6/widgets/custom_elevated_button.dart';
 import 'package:vincent_s_application6/widgets/custom_phone_number.dart';
 import 'package:vincent_s_application6/widgets/custom_text_form_field.dart';
 
-// ignore_for_file: must_be_immutable
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({Key? key}) : super(key: key);
 
   Country selectedCountry = CountryPickerUtils.getCountryByPhoneCode('62');
 
-  TextEditingController nameController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
 
-  TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController phoneNumberController = TextEditingController();
 
-  TextEditingController emailController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -47,34 +44,33 @@ class ProfileScreen extends StatelessWidget {
                               child: Text("Photo Profile",
                                   style: CustomTextStyles.bodyMedium14)),
                           SizedBox(height: 10.v),
-                          _buildView(context),
+                          fotoProfil(context),
                           SizedBox(height: 10.v),
                           Padding(
                               padding: EdgeInsets.only(left: 50.h),
                               child: Text("Add Photo",
                                   style: CustomTextStyles.bodyMedium14)),
                           SizedBox(height: 30.v),
-                          _buildFortySix(context),
+                          nama(context),
                           Align(
                               alignment: Alignment.center,
                               child: Divider(indent: 27.h, endIndent: 14.h)),
                           SizedBox(height: 26.v),
-                          _buildFortyEight(context),
+                          nomorTelpon(context),
                           Align(
                               alignment: Alignment.centerRight,
                               child: Divider(indent: 90.h, endIndent: 14.h)),
                           SizedBox(height: 22.v),
-                          _buildFortySeven(context),
+                          email(context),
                           Align(
                               alignment: Alignment.center,
                               child: Divider(indent: 27.h, endIndent: 16.h)),
                           SizedBox(height: 41.v),
-                          _buildSave(context),
+                          buttonSave(context),
                           SizedBox(height: 5.v)
                         ]))))));
   }
 
-  /// Section Widget
   PreferredSizeWidget appBar(BuildContext context) {
     return CustomAppBar(
         leadingWidth: 48.h,
@@ -88,13 +84,11 @@ class ProfileScreen extends StatelessWidget {
         styleType: Style.bgFill);
   }
 
-  /// Navigates back to the previous screen.
   arrowBack(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.settingScreen);
   }
 
-  /// Section Widget
-  Widget _buildView(BuildContext context) {
+  Widget fotoProfil(BuildContext context) {
     return Align(
         alignment: Alignment.center,
         child: Padding(
@@ -112,7 +106,7 @@ class ProfileScreen extends StatelessWidget {
                       style: CustomTextStyles.bodySmallBlack900Light))
             ])));
   }
-  Widget _buildName(BuildContext context) {
+  Widget controllerNama(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(right: 88.h),
         child: CustomTextFormField(
@@ -122,8 +116,7 @@ class ProfileScreen extends StatelessWidget {
   }
 
 
-  /// Section Widget
-  Widget _buildFortySix(BuildContext context) {
+  Widget nama(BuildContext context) {
     return Container(
         width: double.maxFinite,
         padding: EdgeInsets.symmetric(horizontal: 26.h, vertical: 3.v),
@@ -135,12 +128,11 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(height: 3.v),
               Text("Name *", style: CustomTextStyles.titleSmallMedium),
               SizedBox(height: 15.v),
-              _buildName(context)
+              controllerNama(context)
             ]));
   }
 
-  /// Section Widget
-  Widget _buildPhoneNumber(BuildContext context) {
+  Widget controllerNomor(BuildContext context) {
     return CustomPhoneNumber(
         country: selectedCountry,
         controller: phoneNumberController,
@@ -149,8 +141,7 @@ class ProfileScreen extends StatelessWidget {
         });
   }
 
-  /// Section Widget
-  Widget _buildFortyEight(BuildContext context) {
+  Widget nomorTelpon(BuildContext context) {
     return Container(
         width: double.maxFinite,
         padding: EdgeInsets.symmetric(horizontal: 23.h, vertical: 6.v),
@@ -165,12 +156,11 @@ class ProfileScreen extends StatelessWidget {
                   child: Text("Phone Number *",
                       style: CustomTextStyles.titleSmallMedium)),
               SizedBox(height: 10.v),
-              _buildPhoneNumber(context)
+              controllerNomor(context)
             ]));
   }
 
-  /// Section Widget
-  Widget _buildEmail(BuildContext context) {
+  Widget controllerEmail(BuildContext context) {
     return Padding(
         padding: EdgeInsets.only(right: 88.h),
         child: CustomTextFormField(
@@ -179,8 +169,7 @@ class ProfileScreen extends StatelessWidget {
             ));
   }
 
-  /// Section Widget
-  Widget _buildFortySeven(BuildContext context) {
+  Widget email(BuildContext context) {
     return Container(
         width: double.maxFinite,
         padding: EdgeInsets.symmetric(horizontal: 27.h, vertical: 5.v),
@@ -192,26 +181,24 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(height: 4.v),
               Text("Email *", style: CustomTextStyles.titleSmallMedium),
               SizedBox(height: 15.v),
-              _buildEmail(context)
+              controllerEmail(context)
             ]));
   }
 
-  /// Section Widget
-  Widget _buildSave(BuildContext context) {
+  Widget buttonSave(BuildContext context) {
     return CustomElevatedButton(
         height: 38.v,
         width: 91.h,
         text: "Save",
         margin: EdgeInsets.only(left: 26.h),
         buttonStyle: CustomButtonStyles.fillPrimaryTL10,
-        buttonTextStyle: CustomTextStyles.titleMediumOnPrimaryContainer,
+        buttonTextStyle: CustomTextStyles.titleMediumOnPrimaryContainerExtraBold,
         onPressed: () {
-          onTapSave(context);
+          toSetting(context);
         });
   }
 
-  /// Navigates to the settingScreen when the action is triggered.
-  onTapSave(BuildContext context) {
+  toSetting(BuildContext context) {
     Navigator.pushNamed(context, AppRoutes.settingScreen);
   }
 
